@@ -449,46 +449,6 @@ def interactive_setup(settings):
         input("\n")
 
 
-def set_logger(bot):
-    logger = logging.getLogger("Caverna")
-    logger.setLevel(logging.INFO)
-
-    Caverna_format = logging.Formatter(
-        '%(asctime)s %(levelname)s %(module)s %(funcName)s %(lineno)d: '
-        '%(message)s',
-        datefmt="[%d/%m/%Y %H:%M]")
-
-    stdout_handler = logging.StreamHandler(sys.stdout)
-    stdout_handler.setFormatter(Caverna_format)
-    if bot.settings.debug:
-        stdout_handler.setLevel(logging.DEBUG)
-        logger.setLevel(logging.DEBUG)
-    else:
-        stdout_handler.setLevel(logging.INFO)
-        logger.setLevel(logging.INFO)
-
-    fhandler = logging.handlers.RotatingFileHandler(
-        filename='data/Caverna/Caverna.log', encoding='utf-8', mode='a',
-        maxBytes=10**7, backupCount=5)
-    fhandler.setFormatter(Caverna_format)
-
-    logger.addHandler(fhandler)
-    logger.addHandler(stdout_handler)
-
-    dpy_logger = logging.getLogger("discord")
-    if bot.settings.debug:
-        dpy_logger.setLevel(logging.DEBUG)
-    else:
-        dpy_logger.setLevel(logging.WARNING)
-    handler = logging.FileHandler(
-        filename='data/Caverna/discord.log', encoding='utf-8', mode='a')
-    handler.setFormatter(logging.Formatter(
-        '%(asctime)s %(levelname)s %(module)s %(funcName)s %(lineno)d: '
-        '%(message)s',
-        datefmt="[%d/%m/%Y %H:%M]"))
-    dpy_logger.addHandler(handler)
-
-    return logger
 
 
 def ensure_reply(msg):
