@@ -55,6 +55,8 @@ class Bot(commands.Bot):
             if self.settings.self_bot:
                 kwargs['pm_help'] = False
         super().__init__(*args, command_prefix=prefix_manager, **kwargs)
+        
+        self.change_status(game="use -help for commands", idle=False)
 
     async def send_message(self, *args, **kwargs):
         if self._message_modifiers:
