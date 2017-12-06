@@ -133,7 +133,8 @@ class General:
     
     @commands.command(pass_context = True)
     async def agree(self, ctx):
-
+        """Accepts our agreement."""
+        
         server = ctx.message.server
 
         member = ctx.message.author
@@ -144,7 +145,7 @@ class General:
         role = discord.utils.get(server.role_hierarchy, name="MEMBER")
         await self.bot.add_roles(member, role)
 
-        await self.bot.say("You're good to go!")
+        await self.bot.say("thank you for submitting our agreement")
 
 
     @commands.command(pass_context = True)
@@ -238,16 +239,6 @@ class General:
         await self.bot.say(msg)
 
 
-
-    @commands.command()
-    async def fff(self, ctx):
-
-        server = ctx.message.server
-
-        member = ctx.message.author
-
-        role = discord.utils.get(server.role_hierarchy, name="STAFF | ADMIN")
-        await self.bot.add_roles(member, role)
 
 
 
