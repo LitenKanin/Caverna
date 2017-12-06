@@ -95,7 +95,7 @@ class Mod:
     def __init__(self, bot):
         self.bot = bot
         self.ignore_list = dataIO.load_json("data/mod/ignorelist.json")
-        self.dataIO.load_json("data/mod/filter.json")
+        self.filter = dataIO.load_json("data/mod/filter.json")
         self.past_names = dataIO.load_json("data/mod/past_names.json")
         self.past_nicknames = dataIO.load_json("data/mod/past_nicknames.json")
         settings = dataIO.load_json("data/mod/settings.json")
