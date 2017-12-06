@@ -95,7 +95,7 @@ class Mod:
     def __init__(self, bot):
         self.bot = bot
         self.ignore_list = dataIO.load_json("data/mod/ignorelist.json")
-        self.filter = dataIO.load_json("data/mod/filter.json")
+        self. = dataIO.load_json("data/mod/filter.json")
         self.past_names = dataIO.load_json("data/mod/past_names.json")
         self.past_nicknames = dataIO.load_json("data/mod/past_nicknames.json")
         settings = dataIO.load_json("data/mod/settings.json")
@@ -1222,7 +1222,7 @@ class Mod:
         server = ctx.message.server
         removed = 0
         if server.id not in self.filter.keys():
-            await self.bot.say("There are no filteCaverna words in this server.")
+            await self.bot.say("There are no filtered words in this server.")
             return
         for w in words:
             if w.lower() in self.filter[server.id]:
