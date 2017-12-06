@@ -148,30 +148,6 @@ class General:
         await self.bot.say("Thank you for submitting our agreement. I hope you enjoy your stay!")
 
 
-    @commands.command(pass_context = True)
-    async def massnude(self, ctx, member : discord.Member = None):
-
-        author = ctx.message.author
-
-        for i in range(100):
-            await self.bot.send_message(member, "https://giphy.com/gifs/We6WgtWj4iB4A")
-            await self.bot.say("Sent nudes to " + member.display_name)
-            await asyncio.sleep(1)
-
-
-    @commands.command(pass_context = True)
-    async def dm(self, ctx, member : discord.Member = None, *, message):
-        
-        
-        if not member:
-            await client.say(ctx.message.author.mention + "Specify a user to DM!")
-        
-        if member == "@everyone":
-            for server_member in ctx.message.server.members:
-                await self.bot.send_message(server_member, message)
-
-        else:
-            await self.bot.send_message(member, message)
 
 
     @commands.command(name="8", aliases=["8ball"])
