@@ -46,7 +46,6 @@ class Bot(commands.Bot):
         self.settings = Settings()
         self._intro_displayed = False
         self._shutdown_mode = None
-        self.logger = set_logger(self)
         self._last_exception = None
         self.oauth_url = ""
         if 'self_bot' in kwargs:
