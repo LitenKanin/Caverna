@@ -209,6 +209,7 @@ class General:
 
     @commands.command(pass_context = True)
     async def tts(self, ctx, msg : str):
+        """Uses the text to speech function."""
 
         server = ctx.message.server
 
