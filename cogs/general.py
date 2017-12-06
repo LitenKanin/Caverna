@@ -145,7 +145,7 @@ class General:
         role = discord.utils.get(server.role_hierarchy, name="MEMBER")
         await self.bot.add_roles(member, role)
 
-        await self.bot.say("thank you for submitting our agreement")
+        await self.bot.say("Thank you for submitting our agreement. I hope you enjoy your stay!")
 
 
     @commands.command(pass_context = True)
