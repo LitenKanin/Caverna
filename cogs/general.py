@@ -138,14 +138,13 @@ class General:
 
         member = ctx.message.author
 
-        rrole = discord.utils.get(server.role_hierarchy, name="Guest [Read Agreement]")
+        rrole = discord.utils.get(server.role_hierarchy, name="Guest")
         await self.bot.remove_roles(member, rrole)
 
-        role = discord.utils.get(server.role_hierarchy, name="STAFF | ADMIN")
+        role = discord.utils.get(server.role_hierarchy, name="MEMBER")
         await self.bot.add_roles(member, role)
 
-        await self.bot.say("You're good to go!"
-                            "".format(member.mention))
+        await self.bot.say("You're good to go!")
 
 
     @commands.command(pass_context = True)
