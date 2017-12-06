@@ -1,1 +1,1 @@
-worker: node Caverna.py
+worker: python Caverna.py
