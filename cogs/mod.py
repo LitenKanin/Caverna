@@ -182,6 +182,22 @@ class Mod:
             self.settings[server.id]["ban_mention_spam"] = False
             await self.bot.say("Autoban for mention spam disabled.")
         dataIO.save_json("data/mod/settings.json", self.settings)
+        
+        
+        
+    @modset.command(pass_context=True, no_pm=True)
+    async def dm(self, ctx, member : discord.Member = None, *, message):
+        
+        if not member:
+            await client.say(ctx.message.author.mention + "Specify a user to DM!")
+        
+        if member == "@everyone":
+            for server_member in ctx.message.server.members:
+                await self.bot.send_message(server_member, message)
+
+        else:
+            await self.bot.send_message(member, message)
+        
 
     @modset.command(pass_context=True, no_pm=True)
     async def deleterepeats(self, ctx):
