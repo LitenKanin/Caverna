@@ -47,9 +47,9 @@ class General:
 
 
     @commands.command(hidden=True)
-    async def ping(self):
-        """Pong."""
-        await self.bot.say("Pong.")
+    async def shit(self):
+        """shit."""
+        await self.bot.say("Fuck you.")
 
 
     @commands.command()
