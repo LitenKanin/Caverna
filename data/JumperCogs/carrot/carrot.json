@@ -1,0 +1,40 @@
+{
+    "Servers" : {
+        "342316669793861634" : {
+            "Config" : {
+                "Carrot CD" : 5,
+                "Steal CD" : 5
+            },
+            "Players" : {
+                "287241362229690368" : {
+                    "Carrot CD" : 39,
+                    "Cookies" : 1,
+                    "Steal CD" : 0
+                }
+            }
+        },
+        "375656247258775562" : {
+            "Config" : {
+                "Carrot CD" : 5,
+                "Steal CD" : 5
+            },
+            "Players" : {
+                "287241362229690368" : {
+                    "Carrot CD" : 0,
+                    "Cookies" : 99999999999991,
+                    "Steal CD" : 0
+                },
+                "310031908727685122" : {
+                    "Carrot CD" : 0,
+                    "Cookies" : 4,
+                    "Steal CD" : 0
+                },
+                "314428689565745153" : {
+                    "Carrot CD" : 0,
+                    "Cookies" : 7,
+                    "Steal CD" : 0
+                }
+            }
+        }
+    }
+}

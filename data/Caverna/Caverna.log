@@ -1,0 +1,11 @@
+[06/12/2017 18:59] ERROR Caverna <module> 620: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "Caverna.py", line 600, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\Yaron\AppData\Local\Programs\Python\Python36-32\lib\asyncio\base_events.py", line 467, in run_until_complete
+    return future.result()
+  File "Caverna.py", line 572, in main
+    interactive_setup(bot.settings)
+  File "Caverna.py", line 400, in interactive_setup
+    if not settings.login_cCavernaentials:
+AttributeError: 'Settings' object has no attribute 'login_cCavernaentials'

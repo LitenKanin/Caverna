@@ -1,0 +1,20 @@
+{
+    "cogs.advgoogle" : true,
+    "cogs.alias" : true,
+    "cogs.audio" : true,
+    "cogs.blizzard" : true,
+    "cogs.carrot" : true,
+    "cogs.cookie" : true,
+    "cogs.customcom" : true,
+    "cogs.discomegle" : true,
+    "cogs.downloader" : true,
+    "cogs.economy" : true,
+    "cogs.general" : true,
+    "cogs.image" : true,
+    "cogs.mod" : true,
+    "cogs.overwatch" : true,
+    "cogs.spoiler" : true,
+    "cogs.streams" : true,
+    "cogs.trivia" : true,
+    "cogs.welcome" : true
+}
