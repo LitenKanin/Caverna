@@ -330,7 +330,7 @@ def initialize(bot_class=Bot, formatter_class=Formatter):
     @bot.event
     async def on_command_error(error, ctx):
         channel = ctx.message.channel
-        if isinstance(error, commands.MissingRequiCavernaArgument):
+        if isinstance(error, commands.MissingRequiredArgument):
             await bot.send_cmd_help(ctx)
         elif isinstance(error, commands.BadArgument):
             await bot.send_cmd_help(ctx)
