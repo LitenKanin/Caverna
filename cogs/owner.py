@@ -190,7 +190,7 @@ class Owner:
             
     @commands.command(pass_context=True, hidden=True)
     @checks.is_owner()
-    async def status(self, ctx, *, statusmsg):
+    async def status(self, statusmsg):
         """changes status"""
         
     self.change_status(game=statusmsg, idle=False)
