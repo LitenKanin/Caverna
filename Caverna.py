@@ -314,6 +314,7 @@ def initialize(bot_class=Bot, formatter_class=Formatter):
               "option from the launcher.")
 
         await bot.get_cog('Owner').disable_commands()
+        await bot.change_presence(game=discord.Game(name='type -help for commands'))
 
     @bot.event
     async def on_resumed():
