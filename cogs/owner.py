@@ -186,6 +186,14 @@ class Owner:
                )
         for page in pagify(msg, [" "], shorten_by=16):
             await self.bot.say(box(page.lstrip(" "), lang="diff"))
+            
+            
+    @commands.command(pass_context=True, hidden=True)
+    @checks.is_owner()
+    async def status(self, ctx, *, statusmsg):
+        """changes status"""
+        
+    self.change_status(game=statusmsg, idle=False)
 
     @commands.command(pass_context=True, hidden=True)
     @checks.is_owner()
