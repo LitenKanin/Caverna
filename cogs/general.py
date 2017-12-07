@@ -102,9 +102,9 @@ class General:
             
             
     @commands.command(pass_content=True)
-    async def status(self,statusmsg):
+    async def status(self, statusmsg):
         
-        self.change_presence(*, game="test", status=None, afk=False)
+        await self.change_presence(game=statusmsg, status=None, afk=False)
 
     @commands.command(pass_context=True)
     async def rps(self, ctx, your_choice : RPSParser):
