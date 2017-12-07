@@ -115,7 +115,7 @@ class Welcome:
     async def member_join(self, member):
         server = member.server
 
-        role = discord.utils.get(server.roles, name="KANIN | MEMBER")
+        role = discord.utils.get(server.roles, name="Guest")
         await self.bot.add_roles(member, role)
 
 
