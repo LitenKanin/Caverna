@@ -99,6 +99,12 @@ class General:
             await self.bot.say(msg + "(╯°□°）╯︵ " + name[::-1])
         else:
             await self.bot.say("*flips a coin and... " + choice(["HEADS!*", "TAILS!*"]))
+            
+            
+    @commands.command(pass_content=True)
+    async def status(self,statusmsg):
+        
+        self.change_presence(*, game="test", status=None, afk=False)
 
     @commands.command(pass_context=True)
     async def rps(self, ctx, your_choice : RPSParser):
