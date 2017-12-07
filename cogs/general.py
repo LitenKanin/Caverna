@@ -138,12 +138,10 @@ class General:
         server = ctx.message.server
 
         member = ctx.message.author
-
-        rrole = discord.utils.get(server.role_hierarchy, name="Guest")
-        await self.bot.remove_roles(member, rrole)
-
+        
+        
         role = discord.utils.get(server.role_hierarchy, name="MEMBER")
-        await self.bot.add_roles(member, role)
+        await self.bot.replace_roles(member, role)
 
         await self.bot.say("Thank you for submitting our agreement. I hope you enjoy your stay!")
 
