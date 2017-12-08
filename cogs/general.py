@@ -76,6 +76,12 @@ class General:
             await self.bot.say("{} :game_die: {} :game_die:".format(author.mention, n))
         else:
             await self.bot.say("{} Maybe higher than 1? ;P".format(author.mention))
+            
+            
+    @commands.command(pass_context=True)
+    async def apply(self, ctx, job, reason):
+        if job = 2:
+            await self.bot.say("test")
 
     @commands.command(pass_context=True)
     async def flip(self, ctx, user : discord.Member=None):
