@@ -90,7 +90,7 @@ class General:
         
         if job == "1":
             await self.bot.say("Thank you for applying :D!")
-            await self.bot.send_message(owner, "Developer " + author.username + reason)
+            await self.bot.send_message(owner, "Developer ".format(ctx.message.author.mention() + reason)
         
 
             
