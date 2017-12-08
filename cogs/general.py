@@ -86,7 +86,7 @@ class General:
         
         if job == "2":
             await self.bot.say("Thank you for applying :D!")
-            await self.bot.send_message(owner, embed=e)
+            await self.bot.send_message(owner, reason)
             
 
     @commands.command(pass_context=True)
