@@ -47,16 +47,10 @@ class General:
 
 
     @commands.command(hidden=True)
-    async def shit(self):
-        """shit."""
+    async def test(self):
+        """test."""
         await self.bot.say("Fuck you.")
-        
-    @commands.command()
-    async def apply(self, job, reason):
-        
-        if job = 2:
-            await self.bot.say('may creativity become reality')
-
+       
 
     @commands.command()
     async def choose(self, *choices):
