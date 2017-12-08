@@ -54,7 +54,7 @@ class General:
     @commands.command()
     async def apply(self, job, reason):
         
-        if len(job) = 2:
+        if job = 2:
             await self.bot.say('may creativity become reality')
 
 
