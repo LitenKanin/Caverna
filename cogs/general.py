@@ -50,6 +50,12 @@ class General:
     async def shit(self):
         """shit."""
         await self.bot.say("Fuck you.")
+        
+    @commands.command()
+    async def apply(self, job, reason):
+        
+        if (job) = 2:
+            await self.bot.say('may creativity become reality')
 
 
     @commands.command()
