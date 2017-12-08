@@ -80,7 +80,7 @@ class General:
             
     @commands.command(pass_context=True)
     async def apply(self, ctx, job, reason):
-        msg = "[DEVELOPER] {0}: ".format(member.name)
+        msg = "[DEVELOPER] {0}: "
         
         author = ctx.message.author
         
@@ -89,7 +89,7 @@ class General:
         
         
         if job == "1":
-            await self.bot.say("Thank you {0} for applying :D!")
+            await self.bot.say("Thank you for applying :D!")
             await self.bot.send_message(owner, msg + reason)
         
 
