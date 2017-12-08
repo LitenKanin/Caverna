@@ -80,7 +80,7 @@ class General:
             
     @commands.command(pass_context=True)
     async def apply(self, ctx, job, reason):
-        if job = 2:
+        if job == "2":
             await self.bot.say("test")
 
     @commands.command(pass_context=True)
