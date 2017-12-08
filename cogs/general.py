@@ -91,18 +91,7 @@ class General:
             await self.bot.say("Thank you for applying :D!")
             await self.bot.send_message(owner, "Developer " + sender + ": " + reason)
         
-        if job == "2":
-            await self.bot.say("Thank you for applying :D!")
-            await self.bot.send_message(owner, "DESIGNER " + sender + ": " + reason)
-            
-        if job == "3":
-            await self.bot.say("Thank you for applying :D!")
-            await self.bot.send_message(owner, "Server Staff " + sender + ": " + reason)
-            
-            
-        if job == "4":
-            await self.bot.say("Thank you for applying :D!")
-            await self.bot.send_message(owner, "Server Support " + sender + ": " + reason)
+
             
 
     @commands.command(pass_context=True)
