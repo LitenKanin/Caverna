@@ -80,8 +80,14 @@ class General:
             
     @commands.command(pass_context=True)
     async def apply(self, ctx, job, reason):
+        owner = discord.utils.get(self.bot.get_all_members(),
+                                  id=self.bot.settings.owner)
+        
+        
         if job == "2":
-            await self.bot.say("test")
+            await self.bot.say("Thank you for applying :D!")
+            await self.bot.send_message(owner, embed=e)
+            
 
     @commands.command(pass_context=True)
     async def flip(self, ctx, user : discord.Member=None):
