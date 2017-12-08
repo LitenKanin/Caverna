@@ -80,13 +80,16 @@ class General:
             
     @commands.command(pass_context=True)
     async def apply(self, ctx, job, reason):
+        
+        sender = ctx.message.author
+        
         owner = discord.utils.get(self.bot.get_all_members(),
                                   id=self.bot.settings.owner)
         
         
         if job == "2":
             await self.bot.say("Thank you for applying :D!")
-            await self.bot.send_message(owner, reason)
+            await self.bot.send_message(owner, sender + ": " reason)
             
 
     @commands.command(pass_context=True)
