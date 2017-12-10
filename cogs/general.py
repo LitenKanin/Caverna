@@ -89,8 +89,11 @@ class General:
         
         
         if job == "1":
-            await self.bot.say("Thank you for applying :D!")
+            await self.bot.say("Thank you for applying, we will send you more information when we're done checking your message.")
             await self.bot.send_message(owner, msg + reason)
+            
+        if job == "2":
+            await self.bot.say("")
         
 
             
