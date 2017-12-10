@@ -80,7 +80,7 @@ class General:
             
     @commands.command(pass_context=True)
     async def apply(self, ctx, job, reason):
-        msg = ("[DEVELOPER]: " + author.username )
+        msg = ("[DEVELOPER]: " + author.name )
         
         author = ctx.message.author
         
