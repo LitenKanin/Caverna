@@ -203,17 +203,13 @@ class General:
 
 
     @commands.command(pass_context = True)
-    async def tts(self, ctx, msg : str):
+    async def tts(self, ctx, *args):
         """Uses the text to speech function."""
 
-        server = ctx.message.server
-
-        member = ctx.message.author
+        mesg = ' '.join(args)
 
 
-        await self.bot.say(msg, tts=True)
-        
-        self.bot.remove.message(msg)
+        await self.bot.say(mesg, tts=True)
 
 
     @commands.command(no_pm=True, hidden=True)
