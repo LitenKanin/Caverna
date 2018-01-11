@@ -5,7 +5,7 @@
     "PREFIXES" : [
         "-"
     ],
-    "TOKEN" : TOKEN
+    "TOKEN" : TOKEN,
     "default" : {
         "ADMIN_ROLE" : "ADMINISTRATOR",
         "MOD_ROLE" : "MODERATOR",
