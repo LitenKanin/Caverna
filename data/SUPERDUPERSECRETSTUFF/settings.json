@@ -9,7 +9,7 @@ import os
     "PREFIXES" : [
         "-"
     ],
-    "TOKEN" : os.environ.get('IS_HEROKU', None),
+    "TOKEN" : "Mzg4MDMx" + "NDQxNTkx" + "NzMwMTc2.DT" + "k6uQ.o8ASy" + "gD4K" + "EQP" + "hWj" + "C5" + "X6" + "bT" + "ckewgk",
     "default" : {
         "ADMIN_ROLE" : "ADMINISTRATOR",
         "MOD_ROLE" : "MODERATOR",
