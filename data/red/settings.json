@@ -5,7 +5,7 @@
     "PREFIXES" : [
         "-"
     ],
-    //You rlly think I add my token here in github? gtfo this file!!!
+    "TOKEN" : TOKEN
     "default" : {
         "ADMIN_ROLE" : "ADMINISTRATOR",
         "MOD_ROLE" : "MODERATOR",
