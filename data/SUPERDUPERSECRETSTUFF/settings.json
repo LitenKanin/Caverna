@@ -9,7 +9,7 @@ import os
     "PREFIXES" : [
         "-"
     ],
-    "TOKEN" : "Mzg4MDMx" + "NDQxNTkx" + "NzMwMTc2.DT" + "k6uQ.o8ASy" + "gD4K" + "EQP" + "hWj" + "C5" + "X6" + "bT" + "ckewgk",
+    "TOKEN" : "Mzg4MDMxNDQxNTkxNzMwMTc2.DTk6uQ.o8ASygD4KEQPhWjC5X6bTckewgk",
     "default" : {
         "ADMIN_ROLE" : "ADMINISTRATOR",
         "MOD_ROLE" : "MODERATOR",
