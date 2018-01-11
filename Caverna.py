@@ -391,9 +391,7 @@ def interactive_setup(settings):
 
     if first_run:
         print("Caverna - First run configuration\n")
-        print("If you haven't already, create a new account:\n"
-              "https://twentysix26.github.io/Caverna-Docs/Kanin_guide_bot_accounts/"
-              "#creating-a-new-bot-account")
+        print("Waffles are nice")
         print("and obtain your bot's token like described.")
 
     if not settings.login_credentials:
