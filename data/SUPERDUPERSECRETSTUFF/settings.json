@@ -1,14 +1,14 @@
 {
-    EMAIL  null,
-    OWNER  287241362229690368,
-    PASSWORD  null,
+    EMAIL : null,
+    OWNER : 287241362229690368,
+    PASSWORD : null,
     PREFIXES  [
         -
     ],
-    TOKEN  Mzg4MDMxNDQxNTkxNzMwMTc2.DTknTw.RWQruBJi42D23R-JLnnJSSoH2vE,
+    TOKEN : "Mzg4MDMxNDQxNTkxNzMwMTc2.DTknTw.RWQruBJi42D23R-JLnnJSSoH2vE",
     default  {
-        ADMIN_ROLE  ADMINISTRATOR,
-        MOD_ROLE  MODERATOR,
-        PREFIXES  []
+        ADMIN_ROLE : ADMINISTRATOR,
+        MOD_ROLE : MODERATOR,
+        PREFIXES : []
     }
 }
