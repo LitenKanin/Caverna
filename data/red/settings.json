@@ -6,7 +6,6 @@
         "-"
     ],
     "default" : {
-        "TOKEN" : "Mzg4MDMxNDQxNTkxNzMwMTc2.DTknTw.RWQruBJi42D23R-JLnnJSSoH2vE",
         "ADMIN_ROLE" : "ADMINISTRATOR",
         "MOD_ROLE" : "MODERATOR",
         "PREFIXES" : []
