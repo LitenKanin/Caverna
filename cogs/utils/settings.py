@@ -5,7 +5,7 @@ import os
 import argparse
 
 
-default_path = "data/red/settings.json"
+default_path = "data/SUPERDUPERSECRETSTUFF/settings.json"
 
 
 class Settings:
