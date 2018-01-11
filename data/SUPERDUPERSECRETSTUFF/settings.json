@@ -5,7 +5,7 @@
     "PREFIXES" : [
         "-"
     ],
-    "TOKEN" : app.config.from_envvar('BOT_TOKEN'),
+    "TOKEN" : os.environ.get('IS_HEROKU', None),
     "default" : {
         "ADMIN_ROLE" : "ADMINISTRATOR",
         "MOD_ROLE" : "MODERATOR",
