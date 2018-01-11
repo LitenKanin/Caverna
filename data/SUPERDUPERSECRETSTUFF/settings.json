@@ -5,7 +5,7 @@
     "PREFIXES" : [
         "-"
     ],
-    "TOKEN" : (process.env.BOT_TOKEN),
+    "TOKEN" : process.env.BOT_TOKEN,
     "default" : {
         "ADMIN_ROLE" : "ADMINISTRATOR",
         "MOD_ROLE" : "MODERATOR",
