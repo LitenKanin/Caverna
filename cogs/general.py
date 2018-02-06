@@ -158,6 +158,8 @@ class General:
         await self.bot.replace_roles(user, role)
 
         await self.bot.say("The user is now reported. ")
+        
+        
 
     
     @commands.command(pass_context = True)
@@ -173,9 +175,8 @@ class General:
         await self.bot.replace_roles(member, role)
 
         await self.bot.say("Thank you for submitting our agreement. I hope you enjoy your stay!")
-
-
-
+        
+        
 
     @commands.command(name="8", aliases=["8ball"])
     async def _8ball(self, *, question : str):
@@ -183,12 +184,15 @@ class General:
 
         Question must end with a question mark.
         """
-        if question != "Is LitenKanin smart?" and question != "Is LitenKanin smart" and question != "is Litenkanin smart?" and question != "is litenkanin smart?" and question != "Is litenkanin smart?":
+        
+        
+
+
+        if question == "Is @Infernum cool?":
+            await self.bot.say("`Yes.`")
+            
+        else:
             await self.bot.say("`" + choice(self.ball) + "`")
-
-
-        if question == "Is LitenKanin smart?":
-            await self.bot.say("`Dude, wtf ofc he's smart.`")
 
     @commands.command(aliases=["sw"], pass_context=True)
     async def stopwatch(self, ctx):
