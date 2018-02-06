@@ -44,14 +44,6 @@ class General:
                      "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful"]
         self.poll_sessions = []
 
-
-
-    @commands.command(hidden=True)
-    async def test(self):
-        """test."""
-        await self.bot.say("Fuck you.")
-       
-
     @commands.command()
     async def choose(self, *choices):
         """Chooses between multiple choices.
@@ -150,6 +142,22 @@ class General:
         else:
             await self.bot.say("{} We're square {}!"
                                "".format(Caverna_choice.value, author.mention))
+            
+            
+    @commands.command(pass_context = True)
+    async def report(self, ctx, *, user: discord.Member=None):
+        """Reports a user."""
+        
+        server = ctx.message.server
+
+        member = ctx.message.author
+        
+        
+        
+        role = discord.utils.get(server.role_hierarchy, name="reported user")
+        await self.bot.replace_roles(user, role)
+
+        await self.bot.say("The user is now reported. ")
 
     
     @commands.command(pass_context = True)
