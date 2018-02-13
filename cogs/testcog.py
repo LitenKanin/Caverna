@@ -1,12 +1,19 @@
+import asyncio
+import os
+import random
+import time
+from operator import itemgetter
+
+# Discord and Caverna
 import discord
+from .utils import checks
+from __main__ import send_cmd_help
+from .utils.dataIO import dataIO
 from discord.ext import commands
 
-@commands.command(pass_context=True)
-async def yt(ctx, url):
 
-    author = ctx.message.author
-    voice_channel = author.voice_channel
-    vc = await client.join_voice_channel(voice_channel)
+    @commands.group(pass_context=True, no_pm=True)
+    async def setcarrot(self, ctx):
+        """Carrot settings group command"""
 
-    player = await vc.create_ytdl_player(url)
-    player.start()
+        await self.bot.say("there's nothing wrong with the other cogs, perhaps check the code of this one")
