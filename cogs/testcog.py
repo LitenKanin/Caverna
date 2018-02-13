@@ -12,8 +12,8 @@ from .utils.dataIO import dataIO
 from discord.ext import commands
 
 
-    @commands.group(pass_context=True, no_pm=True)
-    async def setcarrot(self, ctx):
+    @commands.command(pass_context=True, no_pm=True)
+    async def testcog(self, ctx):
         """Carrot settings group command"""
 
         await self.bot.say("there's nothing wrong with the other cogs, perhaps check the code of this one")
