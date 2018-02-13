@@ -1,9 +1,3 @@
-import asyncio
-import os
-import random
-import time
-from operator import itemgetter
-
 # Discord and Caverna
 import discord
 from .utils import checks
