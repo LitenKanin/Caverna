@@ -18,12 +18,14 @@ class test:
         self.bot = bot
 
     @commands.command()
-    async def test(self, ctx):
-        """Chooses between multiple choices.
+async def mscts(ctx, url):
 
-        To denote multiple choices, you should use double quotes.
-        """
-        await self.bot.say("test succied")
+    author = ctx.message.author
+    voice_channel = author.voice_channel
+    vc = await client.join_voice_channel(voice_channel)
+
+    player = await vc.create_ytdl_player(url)
+    player.start()
 
 
 def setup(bot):
