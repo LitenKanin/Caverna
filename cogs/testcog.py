@@ -19,13 +19,13 @@ class test:
 
     @commands.command()
     async def mscts(ctx, url):
+        
+        author = ctx.message.author
+        voice_channel = author.voice_channel
+        vc = await client.join_voice_channel(voice_channel)
 
-    author = ctx.message.author
-    voice_channel = author.voice_channel
-    vc = await client.join_voice_channel(voice_channel)
-
-    player = await vc.create_ytdl_player(url)
-    player.start()
+        player = await vc.create_ytdl_player(url)
+        player.start()
 
 
 def setup(bot):
