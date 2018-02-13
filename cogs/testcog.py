@@ -27,6 +27,5 @@ class test:
 
 
 def setup(bot):
-    check_files()
     n = test(bot)
     bot.add_cog(n)
