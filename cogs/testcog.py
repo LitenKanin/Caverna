@@ -18,7 +18,7 @@ class test:
         self.bot = bot
 
     @commands.command()
-async def mscts(ctx, url):
+    async def mscts(ctx, url):
 
     author = ctx.message.author
     voice_channel = author.voice_channel
