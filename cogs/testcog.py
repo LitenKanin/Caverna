@@ -18,14 +18,9 @@ class test:
         self.bot = bot
 
     @commands.command()
-    async def mscts(ctx, url):
-        
-        author = ctx.message.author
-        voice_channel = author.voice_channel
-        vc = await self.bot.join_voice_channel(voice_channel)
+    async def test(self, *):
 
-        player = await vc.create_ytdl_player(url)
-        player.start()
+        await self.bot.say("test succied")
 
 
 def setup(bot):
