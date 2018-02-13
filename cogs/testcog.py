@@ -10,7 +10,7 @@ import time
 import aiohttp
 import asyncio
 
-@client.command(pass_context=True)
+@commands.command(pass_context=True)
 async def yt(ctx, url):
 
     author = ctx.message.author
