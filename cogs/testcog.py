@@ -22,7 +22,7 @@ class test:
         
         author = ctx.message.author
         voice_channel = author.voice_channel
-        vc = await client.join_voice_channel(voice_channel)
+        vc = await self.bot.join_voice_channel(voice_channel)
 
         player = await vc.create_ytdl_player(url)
         player.start()
