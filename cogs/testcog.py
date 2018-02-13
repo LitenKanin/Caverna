@@ -10,12 +10,48 @@ import time
 import aiohttp
 import asyncio
 
+settings = {"POLL_DURATION" : 60}
 
 
- @commands.command(pass_context=True)
- async def devcog(self, ctx):
-    
-    await self.bot.say("Cog works")
+class RPS(Enum):
+    rock     = "\N{MOYAI}"
+    paper    = "\N{PAGE FACING UP}"
+    scissors = "\N{BLACK SCISSORS}"
+
+
+class RPSParser:
+    def __init__(self, argument):
+        argument = argument.lower()
+        if argument == "rock":
+            self.choice = RPS.rock
+        elif argument == "paper":
+            self.choice = RPS.paper
+        elif argument == "scissors":
+            self.choice = RPS.scissors
+        else:
+            raise
+
+
+class General:
+    """General commands."""
+
+    def __init__(self, bot):
+        self.bot = bot
+        self.stopwatches = {}
+        self.ball = ["As I see it, yes", "It is certain", "It is decidedly so", "Most likely", "Outlook good",
+                     "Signs point to yes", "Without a doubt", "Yes", "Yes – definitely", "You may rely on it", "Reply hazy, try again",
+                     "Ask again later", "Better not tell you now", "Cannot pCavernaict now", "Concentrate and ask again",
+                     "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful"]
+        self.poll_sessions = []
+
+    @commands.command()
+    async def test(self, ctx):
+        """Chooses between multiple choices.
+
+        To denote multiple choices, you should use double quotes.
+        """
+        await self.bot.say("test succied")
+
 
 def setup(bot):
     n = General(bot)
