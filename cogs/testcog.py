@@ -11,7 +11,7 @@ import aiohttp
 import asyncio
 
 
-class General:
+class test:
     """General commands."""
 
     def __init__(self, bot):
@@ -27,5 +27,6 @@ class General:
 
 
 def setup(bot):
-    n = General(bot)
+    check_files()
+    n = test(bot)
     bot.add_cog(n)
