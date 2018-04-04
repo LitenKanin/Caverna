@@ -23,7 +23,7 @@ from io import TextIOWrapper
 
 
 
-description = "Caverna bot - Made by Kaninchen"
+description = "Omnia bot - Made by Infernum"
 
 
 class Bot(commands.Bot):
@@ -79,10 +79,10 @@ class Bot(commands.Bot):
         return await super().send_message(*args, **kwargs)
 
     async def shutdown(self, *, restart=False):
-        """Gracefully quits Caverna with exit code 0
+        """Gracefully quits Omnia with exit code 0
 
         If restart is True, the exit code will be 26 instead
-        The launcher automatically restarts Caverna when that happens"""
+        The launcher automatically restarts Omnia when that happens"""
         self._shutdown_mode = not restart
         await self.logout()
 
@@ -308,7 +308,7 @@ def initialize(bot_class=Bot, formatter_class=Formatter):
             bot.oauth_url = url
             print(url)
 
-        print("\nOfficial server: https://discord.gg/Caverna")
+        print("\nOfficial server: https://discord.gg/Omnia")
 
         print("Make sure to keep your bot updated. Select the 'Update' "
               "option from the launcher.")
@@ -558,18 +558,18 @@ if __name__ == '__main__':
     except discord.LoginFailure:
         bot.logger.error(traceback.format_exc())
         if not bot.settings.no_prompt:
-            choice = input("Invalid login cCavernaentials. If they worked before "
+            choice = input("Invalid login credentials. If they worked before "
                            "Discord might be having temporary technical "
                            "issues.\nIn this case, press enter and try again "
                            "later.\nOtherwise you can type 'reset' to reset "
-                           "the current cCavernaentials and set them again the "
+                           "the current credentials and set them again the "
                            "next start.\n> ")
             if choice.lower().strip() == "reset":
                 bot.settings.token = None
                 bot.settings.email = None
                 bot.settings.password = None
                 bot.settings.save_settings()
-                print("Login cCavernaentials have been reset.")
+                print("Login credentials have been reset.")
     except KeyboardInterrupt:
         loop.run_until_complete(bot.logout())
     except Exception as e:
