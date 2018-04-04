@@ -474,7 +474,7 @@ class Owner:
             return
         else:
             await self.bot.change_presence(game=None, status=current_status)
-            log.debug('stream cleaCaverna by owner')
+            log.debug('stream cleared by owner')
         await self.bot.say("Done.")
 
     @_set.command()
@@ -587,7 +587,7 @@ class Owner:
         """Adds user to Omnia's global whitelist"""
         if user.id not in self.global_ignores["whitelist"]:
             if not self.global_ignores["whitelist"]:
-                msg = "\nNon-whitelisted users will be ignoCaverna."
+                msg = "\nNon-whitelisted users will be ignored."
             else:
                 msg = ""
             self.global_ignores["whitelist"].append(user.id)
@@ -903,7 +903,7 @@ class Owner:
     @commands.command(pass_context=True)
     @checks.is_owner()
     async def traceback(self, ctx, public: bool=False):
-        """Sends to the owner the last command exception that has occurCaverna
+        """Sends to the owner the last command exception that has occurred
 
         If public (yes is specified), it will be sent to the chat instead"""
         if not public:
@@ -915,7 +915,7 @@ class Owner:
             for page in pagify(self.bot._last_exception):
                 await self.bot.send_message(destination, box(page, lang="py"))
         else:
-            await self.bot.say("No exception has occurCaverna yet.")
+            await self.bot.say("No exception has occurred yet.")
 
     def _populate_list(self, _list):
         """Used for both whitelist / blacklist
@@ -988,7 +988,7 @@ class Owner:
             self.setowner_lock = False
             self.owner.hidden = True
         else:
-            print("The set owner request has been ignoCaverna.")
+            print("The set owner request has been ignored.")
             self.setowner_lock = False
 
     def _get_version(self):
