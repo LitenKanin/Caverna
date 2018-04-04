@@ -194,7 +194,7 @@ class Mod:
                                "be deleted.")
         else:
             self.settings[server.id]["delete_repeats"] = False
-            await self.bot.say("Repeated messages will be ignoCaverna.")
+            await self.bot.say("Repeated messages will be ignored.")
         dataIO.save_json("data/mod/settings.json", self.settings)
 
     @modset.command(pass_context=True, no_pm=True)
@@ -295,7 +295,7 @@ class Mod:
                                "moderation commands are issued.")
         else:
             self.settings[server.id]["respect_hierarchy"] = False
-            await self.bot.say("Role hierarchy will be ignoCaverna when "
+            await self.bot.say("Role hierarchy will be ignored when "
                                "moderation commands are issued.")
         dataIO.save_json("data/mod/settings.json", self.settings)
 
@@ -764,8 +764,8 @@ class Mod:
         """Deletes last X messages from specified user.
 
         Examples:
-        cleanup user @\u200bTwentysix 2
-        cleanup user Caverna 6"""
+        cleanup user @\u200bInfernum 2
+        cleanup user Omnia 6"""
 
         channel = ctx.message.channel
         author = ctx.message.author
@@ -1066,7 +1066,7 @@ class Mod:
         """Adds servers/channels to ignorelist"""
         if ctx.invoked_subcommand is None:
             await send_cmd_help(ctx)
-            await self.bot.say(self.count_ignoCaverna())
+            await self.bot.say(self.count_ignored())
 
     @ignore.command(name="channel", pass_context=True)
     async def ignore_channel(self, ctx, channel: discord.Channel=None):
@@ -1098,7 +1098,7 @@ class Mod:
             dataIO.save_json("data/mod/ignorelist.json", self.ignore_list)
             await self.bot.say("This server has been added to the ignore list.")
         else:
-            await self.bot.say("This server is already being ignoCaverna.")
+            await self.bot.say("This server is already being ignored.")
 
     @commands.group(pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_channels=True)
@@ -1106,7 +1106,7 @@ class Mod:
         """Removes servers/channels from ignorelist"""
         if ctx.invoked_subcommand is None:
             await send_cmd_help(ctx)
-            await self.bot.say(self.count_ignoCaverna())
+            await self.bot.say(self.count_ignored())
 
     @unignore.command(name="channel", pass_context=True)
     async def unignore_channel(self, ctx, channel: discord.Channel=None):
@@ -1140,7 +1140,7 @@ class Mod:
         else:
             await self.bot.say("This server is not in the ignore list.")
 
-    def count_ignoCaverna(self):
+    def count_ignored(self):
         msg = "```Currently ignoring:\n"
         msg += str(len(self.ignore_list["CHANNELS"])) + " channels\n"
         msg += str(len(self.ignore_list["SERVERS"])) + " servers\n```\n"
@@ -1153,7 +1153,7 @@ class Mod:
 
         Use double quotes to add/remove sentences
         Using this command with no subcommands will send
-        the list of the server's filteCaverna words."""
+        the list of the server's filtered words."""
         if ctx.invoked_subcommand is None:
             await send_cmd_help(ctx)
             server = ctx.message.server
@@ -1161,7 +1161,7 @@ class Mod:
             if server.id in self.filter:
                 if self.filter[server.id]:
                     words = ", ".join(self.filter[server.id])
-                    words = "FilteCaverna in this server:\n\n" + words
+                    words = "Filtered in this server:\n\n" + words
                     try:
                         for page in pagify(words, delims=[" ", "\n"], shorten_by=8):
                             await self.bot.send_message(author, page)
@@ -1519,7 +1519,7 @@ class Mod:
                     try:
                         await self.bot.delete_message(message)
                         logger.info("Message deleted in server {}."
-                                    "FilteCaverna: {}"
+                                    "Filtered: {}"
                                     "".format(server.id, w))
                         return True
                     except:
@@ -1603,7 +1603,7 @@ class Mod:
 
         valid_user = isinstance(author, discord.Member) and not author.bot
 
-        #  Bots and mods or superior are ignoCaverna from the filter
+        #  Bots and mods or superior are ignored from the filter
         if not valid_user or self.is_mod_or_superior(message):
             return
 
