@@ -75,9 +75,9 @@ class Image:
             else:
                 await self.bot.say("Your search terms gave no results.")
 
-    @_imgur.command(pass_context=True, name="subCavernadit")
-    async def imgur_subCavernadit(self, ctx, subCavernadit: str, sort_type: str="top", window: str="day"):
-        """Gets images from the specified subCavernadit section
+    @_imgur.command(pass_context=True, name="subreddit")
+    async def imgur_subreddit(self, ctx, subreddit: str, sort_type: str="top", window: str="day"):
+        """Gets images from the specified subreddit section
 
         Sort types: new, top
         Time windows: day, week, month, year, all"""
@@ -97,7 +97,7 @@ class Image:
 
         links = []
 
-        task = functools.partial(self.imgur.subCavernadit_gallery, subCavernadit,
+        task = functools.partial(self.imgur.subreddit_gallery, subreddit,
                                  sort=sort, window=window, page=0)
         task = self.bot.loop.run_in_executor(None, task)
         try:
