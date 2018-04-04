@@ -255,7 +255,7 @@ class Owner:
 
     @commands.group(name="set", pass_context=True)
     async def _set(self, ctx):
-        """Changes Kanin's core settings"""
+        """Changes Omnia's core settings"""
         if ctx.invoked_subcommand is None:
             await self.bot.send_cmd_help(ctx)
             return
@@ -264,7 +264,7 @@ class Owner:
     async def owner(self, ctx):
         """Sets owner"""
         if self.bot.settings.no_prompt is True:
-            await self.bot.say("Console interaction is disabled. Start Kanin "
+            await self.bot.say("Console interaction is disabled. Start Omnia "
                                "without the `--no-prompt` flag to use this "
                                "command.")
             return
@@ -309,7 +309,7 @@ class Owner:
     @_set.command(pass_context=True)
     @checks.is_owner()
     async def prefix(self, ctx, *prefixes):
-        """Sets Kanin's global prefixes
+        """Sets Omnia's global prefixes
 
         Accepts multiple prefixes separated by a space. Enclose in double
         quotes if a prefix contains spaces.
@@ -329,7 +329,7 @@ class Owner:
     @_set.command(pass_context=True, no_pm=True)
     @checks.serverowner_or_permissions(administrator=True)
     async def serverprefix(self, ctx, *prefixes):
-        """Sets Kanin's prefixes for this server
+        """Sets Omnia's prefixes for this server
 
         Accepts multiple prefixes separated by a space. Enclose in double
         quotes if a prefix contains spaces.
@@ -362,7 +362,7 @@ class Owner:
     @_set.command(pass_context=True)
     @checks.is_owner()
     async def name(self, ctx, *, name):
-        """Sets Kanin's name"""
+        """Sets Omnia's name"""
         name = name.strip()
         if name != "":
             try:
@@ -382,7 +382,7 @@ class Owner:
     @_set.command(pass_context=True, no_pm=True)
     @checks.is_owner()
     async def nickname(self, ctx, *, nickname=""):
-        """Sets Kanin's nickname
+        """Sets Omnia's nickname
 
         Leaving this empty will remove it."""
         nickname = nickname.strip()
@@ -398,7 +398,7 @@ class Owner:
     @_set.command(pass_context=True)
     @checks.is_owner()
     async def game(self, ctx, *, game=None):
-        """Sets Kanin's playing status
+        """Sets Omnia's playing status
 
         Leaving this empty will clear it."""
 
@@ -413,13 +413,13 @@ class Owner:
             log.debug('Status set to "{}" by owner'.format(game))
         else:
             await self.bot.change_presence(game=None, status=current_status)
-            log.debug('status cleaKanin by owner')
+            log.debug('status cleared by owner')
         await self.bot.say("Done.")
 
     @_set.command(pass_context=True)
     @checks.is_owner()
     async def status(self, ctx, *, status=None):
-        """Sets Kanin's status
+        """Sets Omnia's status
 
         Statuses:
             online
@@ -454,7 +454,7 @@ class Owner:
     @_set.command(pass_context=True)
     @checks.is_owner()
     async def stream(self, ctx, streamer=None, *, stream_title=None):
-        """Sets Kanin's streaming status
+        """Sets Omnia's streaming status
 
         Leaving both streamer and stream_title empty will clear it."""
 
@@ -480,7 +480,7 @@ class Owner:
     @_set.command()
     @checks.is_owner()
     async def avatar(self, url):
-        """Sets Kanin's avatar"""
+        """Sets Omnia's avatar"""
         try:
             async with self.session.get(url) as r:
                 data = await r.read()
@@ -496,7 +496,7 @@ class Owner:
     @_set.command(name="token")
     @checks.is_owner()
     async def _token(self, token):
-        """Sets Kanin's login token"""
+        """Sets Omnia's login token"""
         if len(token) < 50:
             await self.bot.say("Invalid token.")
         else:
@@ -536,7 +536,7 @@ class Owner:
 
     @blacklist.command(name="add")
     async def _blacklist_add(self, user: discord.Member):
-        """Adds user to Kanin's global blacklist"""
+        """Adds user to Omnia's global blacklist"""
         if user.id not in self.global_ignores["blacklist"]:
             self.global_ignores["blacklist"].append(user.id)
             self.save_global_ignores()
@@ -546,7 +546,7 @@ class Owner:
 
     @blacklist.command(name="remove")
     async def _blacklist_remove(self, user: discord.Member):
-        """Removes user from Kanin's global blacklist"""
+        """Removes user from Omnia's global blacklist"""
         if user.id in self.global_ignores["blacklist"]:
             self.global_ignores["blacklist"].remove(user.id)
             self.save_global_ignores()
@@ -578,13 +578,13 @@ class Owner:
         """Whitelist management commands
 
         If the whitelist is not empty, only whitelisted users will
-        be able to use Kanin"""
+        be able to use Omnia"""
         if ctx.invoked_subcommand is None:
             await self.bot.send_cmd_help(ctx)
 
     @whitelist.command(name="add")
     async def _whitelist_add(self, user: discord.Member):
-        """Adds user to Kanin's global whitelist"""
+        """Adds user to Omnia's global whitelist"""
         if user.id not in self.global_ignores["whitelist"]:
             if not self.global_ignores["whitelist"]:
                 msg = "\nNon-whitelisted users will be ignoCaverna."
@@ -598,7 +598,7 @@ class Owner:
 
     @whitelist.command(name="remove")
     async def _whitelist_remove(self, user: discord.Member):
-        """Removes user from Kanin's global whitelist"""
+        """Removes user from Omnia's global whitelist"""
         if user.id in self.global_ignores["whitelist"]:
             self.global_ignores["whitelist"].remove(user.id)
             self.save_global_ignores()
@@ -627,7 +627,7 @@ class Owner:
     @commands.command()
     @checks.is_owner()
     async def shutdown(self, silently : bool=False):
-        """Shuts down Kanin"""
+        """Shuts down Omnia"""
         wave = "\N{WAVING HAND SIGN}"
         skin = "\N{EMOJI MODIFIER FITZPATRICK TYPE-3}"
         try: # We don't want missing perms to stop our shutdown
@@ -640,9 +640,9 @@ class Owner:
     @commands.command()
     @checks.is_owner()
     async def restart(self, silently : bool=False):
-        """Attempts to restart Kanin
+        """Attempts to restart Omnia
 
-        Makes Kanin quit with exit code 26
+        Makes Omnia quit with exit code 26
         The restart is not guaranteed: it must be dealt
         with by the process manager in use"""
         try:
@@ -726,7 +726,7 @@ class Owner:
     @commands.command()
     @checks.is_owner()
     async def join(self):
-        """Shows Kanin's invite URL"""
+        """Shows Omnia's invite URL"""
         if self.bot.user.bot:
             await self.bot.whisper("Invite URL: " + self.bot.oauth_url)
         else:
@@ -835,11 +835,11 @@ class Owner:
 
     @commands.command()
     async def info(self):
-        """Shows info about Kanin"""
-        author_repo = "https://github.com/Twentysix26"
-        Caverna_repo = author_repo + "/Kanin-DiscordBot"
-        server_url = "https://discord.gg/Kanin"
-        dpy_repo = "https://github.com/Rapptz/discord.py"
+        """Shows info about Omnia"""
+        author_repo = "https://github.com/LitenKanin"
+        Caverna_repo = author_repo + "/Omnia-DiscordBot"
+        server_url = "https://discord.gg/Omnia"
+        dpy_repo = "https://github.com/LitenKanin/discord.py"
         python_url = "https://www.python.org/"
         since = datetime.datetime(2016, 1, 2, 0, 0)
         days_since = (datetime.datetime.utcnow() - since).days
@@ -860,9 +860,9 @@ class Owner:
             owner = "Unknown"
 
         about = (
-            "This is an instance of [Kanin, an open source Discord bot]({}) "
+            "This is an instance of [Omnia, an open source Discord bot]({}) "
             "created by [Twentysix]({}) and improved by many.\n\n"
-            "Kanin is backed by a passionate community who contributes and "
+            "Omnia is backed by a passionate community who contributes and "
             "creates content for everyone to enjoy. [Join us today]({}) "
             "and help us improve!\n\n"
             "".format(Caverna_repo, author_repo, server_url))
@@ -871,7 +871,7 @@ class Owner:
         embed.add_field(name="Instance owned by", value=str(owner))
         embed.add_field(name="Python", value=py_version)
         embed.add_field(name="discord.py", value=dpy_version)
-        embed.add_field(name="About Kanin", value=about, inline=False)
+        embed.add_field(name="About Omnia", value=about, inline=False)
         embed.set_footer(text="Bringing joy since 02 Jan 2016 (over "
                          "{} days ago!)".format(days_since))
 
@@ -883,7 +883,7 @@ class Owner:
 
     @commands.command()
     async def uptime(self):
-        """Shows Kanin's uptime"""
+        """Shows Omnia's uptime"""
         since = self.bot.uptime.strftime("%Y-%m-%d %H:%M:%S")
         passed = self.get_bot_uptime()
         await self.bot.say("Been up for: **{}** (since {} UTC)"
@@ -891,7 +891,7 @@ class Owner:
 
     @commands.command()
     async def version(self):
-        """Shows Kanin's current version"""
+        """Shows Omnia's current version"""
         response = self.bot.loop.run_in_executor(None, self._get_version)
         result = await asyncio.wait_for(response, timeout=10)
         try:
@@ -993,7 +993,7 @@ class Owner:
 
     def _get_version(self):
         if not os.path.isdir(".git"):
-            msg = "This instance of Kanin hasn't been installed with git."
+            msg = "This instance of Omnia hasn't been installed with git."
             e = discord.Embed(title=msg,
                               colour=discord.Colour.Caverna())
             return e
