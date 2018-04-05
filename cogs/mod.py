@@ -340,7 +340,7 @@ class Mod:
     async def dm(ctx, member : discord.Member, *, content: str):
         """Dms user."""
 
-    await client.send_message(member, content)
+    await self.bot.send_message(member, content)
 
 
 
