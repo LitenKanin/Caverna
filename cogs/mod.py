@@ -500,7 +500,7 @@ class Mod:
 
        mesg = ' '.join(args)
 
-       await self.bot.send_message(user ,ctx.message)
+       await self.bot.send_message(user , mesg)
        return await self.bot.say(mesg)
 
     @commands.command(no_pm=True, pass_context=True)
