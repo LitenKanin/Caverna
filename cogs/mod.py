@@ -330,6 +330,21 @@ class Mod:
             await self.bot.say("I'm not allowed to do that.")
         except Exception as e:
             print(e)
+            
+            
+            
+            
+            
+    @commands.command(no_pm=True, pass_context=True)
+    @checks.admin_or_permissions(kick_members=True)
+    async def dm(self, ctx, user: discord.Member, *, Message: str):
+        """Dms user."""
+        author = ctx.message.author
+        server = author.server
+
+    await client.send_message(user, Message)
+
+
 
     @commands.command(no_pm=True, pass_context=True)
     @checks.admin_or_permissions(ban_members=True)
