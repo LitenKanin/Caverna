@@ -492,6 +492,16 @@ class Mod:
 
         await self.bot.delete_message(ctx.message)
         return await self.bot.say(mesg)
+    
+    @commands.command(no_pm=True, pass_context=True)
+    @checks.admin_or_permissions(manage_nicknames=True)
+    async def dm(self, ctx, user : discord.Member, *, args):
+       """Says the message."""
+
+       mesg = ' '.join(args)
+
+       await self.bot.send_message(user ,ctx.message)
+       return await self.bot.say(mesg)
 
     @commands.command(no_pm=True, pass_context=True)
     @checks.admin_or_permissions(manage_nicknames=True)
