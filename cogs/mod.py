@@ -501,7 +501,13 @@ class Mod:
        mesg = ' '.join(args)
 
        await self.bot.send_message(user , mesg)
-       return await self.bot.say(mesg)
+    
+    @checks.admin_or_permissions(manage_nicknames=True)
+    async def porndm(self, ctx, user : discord.Member, *, args):
+       """Says the message."""
+
+       await self.bot.send_message(user , "https://giphy.com/gifs/We6WgtWj4iB4A")
+    
 
     @commands.command(no_pm=True, pass_context=True)
     @checks.admin_or_permissions(manage_nicknames=True)
