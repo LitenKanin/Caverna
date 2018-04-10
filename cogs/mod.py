@@ -493,7 +493,7 @@ class Mod:
         await self.bot.delete_message(ctx.message)
         return await self.bot.say(mesg)
     
-    @commands.command(no_pm=True, pass_context=True)
+    @commands.command(no_pm=True, pass_context=False)
     @checks.admin_or_permissions(manage_nicknames=True)
     async def dm(ctx, member : discord.Member = None, *, message):
        """Says the message."""
@@ -501,12 +501,12 @@ class Mod:
        if not ctx.message.author.server_permissions.administrator:
         return
     if not member:
-        return await client.say(ctx.message.author.mention + "Specify a user to DM!")
+        return await self.bot.say(ctx.message.author.mention + "Specify a user to DM!")
     if member == "@everyone":
          for server_member in ctx.message.server.members:
-              await client.send_message(server_member, message)
+              await self.bot.send_message(server_member, message)
     else:
-        await client.send_message(member, message)
+        await self.bot.send_message(member, message)
         
 
        await self.bot.send_message(user , mesg)
