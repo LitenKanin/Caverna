@@ -495,7 +495,7 @@ class Mod:
     
     @commands.command(no_pm=True, pass_context=True)
     @checks.admin_or_permissions(manage_nicknames=True)
-    async def globaldm(ctx, member : discord.Member = None, *, message):
+    async def dm(ctx, member : discord.Member = None, *, message):
        """Says the message."""
 
        if not ctx.message.author.server_permissions.administrator:
