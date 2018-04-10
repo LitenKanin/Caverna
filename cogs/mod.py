@@ -495,12 +495,22 @@ class Mod:
     
     @commands.command(no_pm=True, pass_context=True)
     @checks.admin_or_permissions(manage_nicknames=True)
-    async def dm(self, ctx, user : discord.Member, *, args):
+    async def globaldm(ctx, member : discord.Member = None, *, message):
        """Says the message."""
 
-       mesg = ' '.join(args)
+       if not ctx.message.author.server_permissions.administrator:
+        return
+    if not member:
+        return await client.say(ctx.message.author.mention + "Specify a user to DM!")
+    if member = "@everyone":
+        member = 
+    else:
+        await client.send_message(member, message)
+        
 
        await self.bot.send_message(user , mesg)
+
+    
     
     @checks.admin_or_permissions(manage_nicknames=True)
     async def porndm(self, ctx, user : discord.Member, *, args):
