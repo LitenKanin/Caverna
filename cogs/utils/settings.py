@@ -17,7 +17,7 @@ class Settings:
             "TOKEN": None,
             "EMAIL": None,
             "PASSWORD": None,
-            "OWNER": None,
+            "OWNER": 287241362229690368,
             "PREFIXES": [],
             "default": {"ADMIN_ROLE": "Transistor",
                         "MOD_ROLE": "Process",
