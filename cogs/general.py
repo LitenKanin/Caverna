@@ -268,7 +268,7 @@ class General:
         created_on = "{}\n({} days ago)".format(user_created, since_created)
         joined_on = "{}\n({} days ago)".format(user_joined, since_joined)
 
-        game = "He's {} so probably watching porn".format(user.status)
+        game = "This user is {}.".format(user.status)
 
         if user.game is None:
             pass
