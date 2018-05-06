@@ -76,24 +76,24 @@ class credits:
 
 
     @commands.command(pass_context=True, no_pm=True)
-    async def give(self, ctx, user: discord.Member, creditss: int):
+    async def give(self, ctx, user: discord.Member, credits: int):
         """Gives another user your inferno credits"""
         author = ctx.message.author
         settings = self.check_server_settings(author.server)
         if user.bot:
-            return await self.bot.say("Nice try, us bots can't accept creditss from strangers.")
+            return await self.bot.say("Nice try, us bots can't accept credits from strangers.")
         if author.id == user.id:
-            return await self.bot.say("You can't give yourself creditss.")
+            return await self.bot.say("You can't give yourself credits.")
         self.account_check(settings, author)
         self.account_check(settings, user)
         sender_cookies = settings["Players"][author.id]["Cookies"]
-        if 0 < creditss <= sender_cookies:
-            settings["Players"][author.id]["Cookies"] -= creditss
-            settings["Players"][user.id]["Cookies"] += creditss
+        if 0 < credits <= sender_cookies:
+            settings["Players"][author.id]["Cookies"] -= credits
+            settings["Players"][user.id]["Cookies"] += credits
             dataIO.save_json(self.file_path, self.system)
-            msg = "You gave **{}** creditss to {}".format(creditss, user.name)
+            msg = "You gave **{}** credits to {}".format(credits, user.name)
         else:
-            msg = "You don't have enough creditss in your account"
+            msg = "You don't have enough credits in your account"
 
         await self.bot.say(msg)
 
@@ -107,11 +107,11 @@ class credits:
         self.account_check(settings, author)
         if await self.check_cooldowns(author.id, action, settings):
             weighted_sample = [1] * 152 + [x for x in range(49) if x > 1]
-            creditss = random.choice(weighted_sample)
-            settings["Players"][author.id]["Cookies"] += creditss
+            credits = random.choice(weighted_sample)
+            settings["Players"][author.id]["Cookies"] += credits
             dataIO.save_json(self.file_path, self.system)
             await self.bot.say("~₍˄·͈༝·͈˄₍˄·͈༝·͈˄ （（≡￣♀￣≡））˄·͈༝·͈˄₎₍˄·͈༝·͈˄₎◞ ̑̑ \nYou recieved {} "
-                               "inferno credit(s) from the virginity protector!".format(creditss))
+                               "inferno credit(s) from the virginity protector!".format(credits))
 
     @commands.command(pass_context=True, no_pm=False, ignore_extra=False)
     async def bank(self, ctx):
@@ -120,9 +120,9 @@ class credits:
         server = ctx.message.server
         settings = self.check_server_settings(server)
         self.account_check(settings, author)
-        creditss = settings["Players"][author.id]["Cookies"]
-        await self.bot.say("ฅ(=＾‥ ＾=)ฅ I see you have **{}** creditss in the jar. "
-                               "".format(creditss))
+        credits = settings["Players"][author.id]["Cookies"]
+        await self.bot.say("ฅ(=＾‥ ＾=)ฅ I see you have **{}** credits in your bank account. "
+                               "".format(credits))
 
     @commands.command(pass_context=True, no_pm=True)
     async def steal(self, ctx, user: discord.Member=None):
@@ -168,7 +168,7 @@ class credits:
     def steal_logic(self, settings, user, author):
         success_chance = random.randint(1, 100)
         if user == "Fail":
-            msg = "ω(=OｪO=)ω Nyaaaaaaaan! I couldn't find anyone with creditss!"
+            msg = "ω(=OｪO=)ω Nyaaaaaaaan! I couldn't find anyone with credits!"
             return msg
 
         if user.id not in settings["Players"]:
@@ -189,7 +189,7 @@ class credits:
                 settings["Players"][user.id]["Cookies"] -= stolen
                 settings["Players"][author.id]["Cookies"] += stolen
                 dataIO.save_json(self.file_path, self.system)
-                msg = ("ω(=＾ ‥ ＾=)ﾉ彡:credits:\nYou stole {} creditss from "
+                msg = ("ω(=＾ ‥ ＾=)ﾉ彡:credits:\nYou stole {} credits from "
                        "{}!".format(stolen, user.name))
             else:
                 msg = "ω(=｀ｪ ´=)ω Vit Kanin couldn't find their :credits: jar!"
