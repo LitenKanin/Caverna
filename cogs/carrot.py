@@ -144,7 +144,7 @@ class credits:
 
         if await self.check_cooldowns(author.id, action, settings):
             msg = self.steal_logic(settings, user, author)
-            await self.bot.say("ଲ(=(|) ɪ (|)=)ଲ Vit Kanin is on the prowl to steal :credits:")
+            await self.bot.say("ଲ(=(|) ɪ (|)=)ଲ Omnia is on the prowl to steal :money_with_wings: ")
             await asyncio.sleep(4)
             await self.bot.say(msg)
 
