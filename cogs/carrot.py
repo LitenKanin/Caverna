@@ -76,24 +76,24 @@ class Carrot:
 
 
     @commands.command(pass_context=True, no_pm=True)
-    async def give(self, ctx, user: discord.Member, inferno credits: int):
+    async def give(self, ctx, user: discord.Member, carrots: int):
         """Gives another user your inferno credits"""
         author = ctx.message.author
         settings = self.check_server_settings(author.server)
         if user.bot:
-            return await self.bot.say("Nice try, us bots can't accept inferno credits from strangers.")
+            return await self.bot.say("Nice try, us bots can't accept carrots from strangers.")
         if author.id == user.id:
-            return await self.bot.say("You can't give yourself inferno credits.")
+            return await self.bot.say("You can't give yourself carrots.")
         self.account_check(settings, author)
         self.account_check(settings, user)
         sender_cookies = settings["Players"][author.id]["Cookies"]
-        if 0 < inferno credits <= sender_cookies:
-            settings["Players"][author.id]["Cookies"] -= inferno credits
-            settings["Players"][user.id]["Cookies"] += inferno credits
+        if 0 < carrots <= sender_cookies:
+            settings["Players"][author.id]["Cookies"] -= carrots
+            settings["Players"][user.id]["Cookies"] += carrots
             dataIO.save_json(self.file_path, self.system)
-            msg = "You gave **{}** inferno credits to {}".format(inferno credits, user.name)
+            msg = "You gave **{}** carrots to {}".format(carrots, user.name)
         else:
-            msg = "You don't have enough inferno credits in your account"
+            msg = "You don't have enough carrots in your account"
 
         await self.bot.say(msg)
 
@@ -107,11 +107,11 @@ class Carrot:
         self.account_check(settings, author)
         if await self.check_cooldowns(author.id, action, settings):
             weighted_sample = [1] * 152 + [x for x in range(49) if x > 1]
-            inferno credits = random.choice(weighted_sample)
-            settings["Players"][author.id]["Cookies"] += inferno credits
+            carrots = random.choice(weighted_sample)
+            settings["Players"][author.id]["Cookies"] += carrots
             dataIO.save_json(self.file_path, self.system)
             await self.bot.say("~₍˄·͈༝·͈˄₍˄·͈༝·͈˄ （（≡￣♀￣≡））˄·͈༝·͈˄₎₍˄·͈༝·͈˄₎◞ ̑̑ \nYou recieved {} "
-                               "inferno credit(s) from the virginity protector!".format(inferno credits))
+                               "inferno credit(s) from the virginity protector!".format(carrots))
 
     @commands.command(pass_context=True, no_pm=False, ignore_extra=False)
     async def bank(self, ctx):
@@ -120,9 +120,9 @@ class Carrot:
         server = ctx.message.server
         settings = self.check_server_settings(server)
         self.account_check(settings, author)
-        inferno credits = settings["Players"][author.id]["Cookies"]
-        await self.bot.say("ฅ(=＾‥ ＾=)ฅ I see you have **{}** inferno credits in the jar. "
-                               "".format(inferno credits))
+        carrots = settings["Players"][author.id]["Cookies"]
+        await self.bot.say("ฅ(=＾‥ ＾=)ฅ I see you have **{}** carrots in the jar. "
+                               "".format(carrots))
 
     @commands.command(pass_context=True, no_pm=True)
     async def steal(self, ctx, user: discord.Member=None):
@@ -168,7 +168,7 @@ class Carrot:
     def steal_logic(self, settings, user, author):
         success_chance = random.randint(1, 100)
         if user == "Fail":
-            msg = "ω(=OｪO=)ω Nyaaaaaaaan! I couldn't find anyone with inferno credits!"
+            msg = "ω(=OｪO=)ω Nyaaaaaaaan! I couldn't find anyone with carrots!"
             return msg
 
         if user.id not in settings["Players"]:
@@ -189,7 +189,7 @@ class Carrot:
                 settings["Players"][user.id]["Cookies"] -= stolen
                 settings["Players"][author.id]["Cookies"] += stolen
                 dataIO.save_json(self.file_path, self.system)
-                msg = ("ω(=＾ ‥ ＾=)ﾉ彡:carrot:\nYou stole {} inferno credits from "
+                msg = ("ω(=＾ ‥ ＾=)ﾉ彡:carrot:\nYou stole {} carrots from "
                        "{}!".format(stolen, user.name))
             else:
                 msg = "ω(=｀ｪ ´=)ω Vit Kanin couldn't find their :carrot: jar!"
