@@ -29,7 +29,7 @@ class PluralDict(dict):
 
 
 class Carrot:
-    """VitKanin loves carrots, and will steal from others for you!"""
+    """VitKanin loves inferno coins, and will steal from others for you!"""
 
     def __init__(self, bot):
         self.bot = bot
@@ -37,7 +37,7 @@ class Carrot:
         self.system = dataIO.load_json(self.file_path)
 
     @commands.group(pass_context=True, no_pm=True)
-    async def setcarrot(self, ctx):
+    async def setinferno(self, ctx):
         """Carrot settings group command"""
 
         if ctx.invoked_subcommand is None:
@@ -46,7 +46,7 @@ class Carrot:
     @setcarrot.command(name="stealcd", pass_context=True)
     @checks.admin_or_permissions(manage_server=True)
     async def _stealcd_heist(self, ctx, cooldown: int):
-        """Set the cooldown for stealing carrots"""
+        """Set the cooldown for stealing inferno coins"""
         server = ctx.message.server
         settings = self.check_server_settings(server)
         if cooldown >= 0:
@@ -59,8 +59,8 @@ class Carrot:
 
     @setcarrot.command(name="cookiecd", pass_context=True)
     @checks.admin_or_permissions(manage_server=True)
-    async def _cookiecd_heist(self, ctx, cooldown: int):
-        """Set the cooldown for carrot command"""
+    async def _infernocd_heist(self, ctx, cooldown: int):
+        """Set the cooldown for inferno coins command"""
         server = ctx.message.server
         settings = self.check_server_settings(server)
         if cooldown >= 0:
@@ -77,7 +77,7 @@ class Carrot:
 
     @commands.command(pass_context=True, no_pm=True)
     async def give(self, ctx, user: discord.Member, carrots: int):
-        """Gives another user your carrots"""
+        """Gives another user your inferno credits"""
         author = ctx.message.author
         settings = self.check_server_settings(author.server)
         if user.bot:
@@ -98,8 +98,8 @@ class Carrot:
         await self.bot.say(msg)
 
     @commands.command(pass_context=True, no_pm=True)
-    async def carrot(self, ctx):
-        """Obtain a random number of carrots. 12h cooldown"""
+    async def inferno(self, ctx):
+        """Obtain a random number of inferno credits. 12h cooldown"""
         author = ctx.message.author
         server = ctx.message.server
         action = "Carrot CD"
@@ -111,11 +111,11 @@ class Carrot:
             settings["Players"][author.id]["Cookies"] += carrots
             dataIO.save_json(self.file_path, self.system)
             await self.bot.say("~₍˄·͈༝·͈˄₍˄·͈༝·͈˄ （（≡￣♀￣≡））˄·͈༝·͈˄₎₍˄·͈༝·͈˄₎◞ ̑̑ \nYou recieved {} "
-                               "carrot(s) from the carrot Gods!".format(carrots))
+                               "inferno credit(s) from the virginity protector!".format(carrots))
 
     @commands.command(pass_context=True, no_pm=False, ignore_extra=False)
-    async def jar(self, ctx):
-        """See how many carrots are in your jar."""
+    async def bank(self, ctx):
+        """See how many inferno credits are in your bank account."""
         author = ctx.message.author
         server = ctx.message.server
         settings = self.check_server_settings(server)
@@ -126,7 +126,7 @@ class Carrot:
 
     @commands.command(pass_context=True, no_pm=True)
     async def steal(self, ctx, user: discord.Member=None):
-        """Steal carrots from another user. 2h cooldown."""
+        """Steal inferno credits from another user. 2h cooldown."""
         author = ctx.message.author
         server = author.server
         action = "Steal CD"
