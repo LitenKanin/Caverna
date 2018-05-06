@@ -28,17 +28,17 @@ class PluralDict(dict):
         raise KeyError(key)
 
 
-class Carrot:
+class credits:
     """VitKanin loves inferno coins, and will steal from others for you!"""
 
     def __init__(self, bot):
         self.bot = bot
-        self.file_path = "data/JumperCogs/carrot/carrot.json"
+        self.file_path = "data/JumperCogs/credits/credits.json"
         self.system = dataIO.load_json(self.file_path)
 
     @commands.group(pass_context=True, no_pm=True)
     async def setinferno(self, ctx):
-        """Carrot settings group command"""
+        """credits settings group command"""
 
         if ctx.invoked_subcommand is None:
             await send_cmd_help(ctx)
@@ -64,9 +64,9 @@ class Carrot:
         server = ctx.message.server
         settings = self.check_server_settings(server)
         if cooldown >= 0:
-            settings["Config"]["Carrot CD"] = cooldown
+            settings["Config"]["credits CD"] = cooldown
             dataIO.save_json(self.file_path, self.system)
-            msg = "Cooldown for carrot set to {}".format(cooldown)
+            msg = "Cooldown for credits set to {}".format(cooldown)
         else:
             msg = "Cooldown needs to be higher than 0."
         await self.bot.say(msg)
@@ -76,24 +76,24 @@ class Carrot:
 
 
     @commands.command(pass_context=True, no_pm=True)
-    async def give(self, ctx, user: discord.Member, carrots: int):
+    async def give(self, ctx, user: discord.Member, creditss: int):
         """Gives another user your inferno credits"""
         author = ctx.message.author
         settings = self.check_server_settings(author.server)
         if user.bot:
-            return await self.bot.say("Nice try, us bots can't accept carrots from strangers.")
+            return await self.bot.say("Nice try, us bots can't accept creditss from strangers.")
         if author.id == user.id:
-            return await self.bot.say("You can't give yourself carrots.")
+            return await self.bot.say("You can't give yourself creditss.")
         self.account_check(settings, author)
         self.account_check(settings, user)
         sender_cookies = settings["Players"][author.id]["Cookies"]
-        if 0 < carrots <= sender_cookies:
-            settings["Players"][author.id]["Cookies"] -= carrots
-            settings["Players"][user.id]["Cookies"] += carrots
+        if 0 < creditss <= sender_cookies:
+            settings["Players"][author.id]["Cookies"] -= creditss
+            settings["Players"][user.id]["Cookies"] += creditss
             dataIO.save_json(self.file_path, self.system)
-            msg = "You gave **{}** carrots to {}".format(carrots, user.name)
+            msg = "You gave **{}** creditss to {}".format(creditss, user.name)
         else:
-            msg = "You don't have enough carrots in your account"
+            msg = "You don't have enough creditss in your account"
 
         await self.bot.say(msg)
 
@@ -102,16 +102,16 @@ class Carrot:
         """Obtain a random number of inferno credits. 12h cooldown"""
         author = ctx.message.author
         server = ctx.message.server
-        action = "Carrot CD"
+        action = "credits CD"
         settings = self.check_server_settings(server)
         self.account_check(settings, author)
         if await self.check_cooldowns(author.id, action, settings):
             weighted_sample = [1] * 152 + [x for x in range(49) if x > 1]
-            carrots = random.choice(weighted_sample)
-            settings["Players"][author.id]["Cookies"] += carrots
+            creditss = random.choice(weighted_sample)
+            settings["Players"][author.id]["Cookies"] += creditss
             dataIO.save_json(self.file_path, self.system)
             await self.bot.say("~₍˄·͈༝·͈˄₍˄·͈༝·͈˄ （（≡￣♀￣≡））˄·͈༝·͈˄₎₍˄·͈༝·͈˄₎◞ ̑̑ \nYou recieved {} "
-                               "inferno credit(s) from the virginity protector!".format(carrots))
+                               "inferno credit(s) from the virginity protector!".format(creditss))
 
     @commands.command(pass_context=True, no_pm=False, ignore_extra=False)
     async def bank(self, ctx):
@@ -120,9 +120,9 @@ class Carrot:
         server = ctx.message.server
         settings = self.check_server_settings(server)
         self.account_check(settings, author)
-        carrots = settings["Players"][author.id]["Cookies"]
-        await self.bot.say("ฅ(=＾‥ ＾=)ฅ I see you have **{}** carrots in the jar. "
-                               "".format(carrots))
+        creditss = settings["Players"][author.id]["Cookies"]
+        await self.bot.say("ฅ(=＾‥ ＾=)ฅ I see you have **{}** creditss in the jar. "
+                               "".format(creditss))
 
     @commands.command(pass_context=True, no_pm=True)
     async def steal(self, ctx, user: discord.Member=None):
@@ -144,7 +144,7 @@ class Carrot:
 
         if await self.check_cooldowns(author.id, action, settings):
             msg = self.steal_logic(settings, user, author)
-            await self.bot.say("ଲ(=(|) ɪ (|)=)ଲ Vit Kanin is on the prowl to steal :carrot:")
+            await self.bot.say("ଲ(=(|) ɪ (|)=)ଲ Vit Kanin is on the prowl to steal :credits:")
             await asyncio.sleep(4)
             await self.bot.say(msg)
 
@@ -168,7 +168,7 @@ class Carrot:
     def steal_logic(self, settings, user, author):
         success_chance = random.randint(1, 100)
         if user == "Fail":
-            msg = "ω(=OｪO=)ω Nyaaaaaaaan! I couldn't find anyone with carrots!"
+            msg = "ω(=OｪO=)ω Nyaaaaaaaan! I couldn't find anyone with creditss!"
             return msg
 
         if user.id not in settings["Players"]:
@@ -176,7 +176,7 @@ class Carrot:
 
         if settings["Players"][user.id]["Cookies"] == 0:
             msg = ("ω(=｀ｪ ´=)ω nothing but crumbs in this "
-                   ":carrot: jar!")
+                   ":credits: jar!")
         else:
             if success_chance <= 90:
                 cookie_jar = settings["Players"][user.id]["Cookies"]
@@ -189,10 +189,10 @@ class Carrot:
                 settings["Players"][user.id]["Cookies"] -= stolen
                 settings["Players"][author.id]["Cookies"] += stolen
                 dataIO.save_json(self.file_path, self.system)
-                msg = ("ω(=＾ ‥ ＾=)ﾉ彡:carrot:\nYou stole {} carrots from "
+                msg = ("ω(=＾ ‥ ＾=)ﾉ彡:credits:\nYou stole {} creditss from "
                        "{}!".format(stolen, user.name))
             else:
-                msg = "ω(=｀ｪ ´=)ω Vit Kanin couldn't find their :carrot: jar!"
+                msg = "ω(=｀ｪ ´=)ω Vit Kanin couldn't find their :credits: jar!"
         return msg
 
     def random_user(self, settings, author, server):
@@ -218,7 +218,7 @@ class Carrot:
         if userobj.id not in settings["Players"]:
             settings["Players"][userobj.id] = {"Cookies": 0,
                                                "Steal CD": 0,
-                                               "Carrot CD": 0}
+                                               "credits CD": 0}
             dataIO.save_json(self.file_path, self.system)
 
     def time_formatting(self, seconds):
@@ -250,7 +250,7 @@ class Carrot:
         if server.id not in self.system["Servers"]:
             self.system["Servers"][server.id] = {"Players": {},
                                                  "Config": {"Steal CD": 5,
-                                                            "Carrot CD": 5}
+                                                            "credits CD": 5}
                                                  }
             dataIO.save_json(self.file_path, self.system)
             print("Creating default heist settings for Server: {}".format(server.name))
@@ -262,21 +262,21 @@ class Carrot:
 
 
 def check_folders():
-    if not os.path.exists("data/JumperCogs/carrot"):
-        print("Creating data/JumperCogs/carrot folder...")
-        os.makedirs("data/JumperCogs/carrot")
+    if not os.path.exists("data/JumperCogs/credits"):
+        print("Creating data/JumperCogs/credits folder...")
+        os.makedirs("data/JumperCogs/credits")
 
 
 def check_files():
     default = {"Servers": {}}
 
-    f = "data/JumperCogs/carrot/carrot.json"
+    f = "data/JumperCogs/credits/credits.json"
     if not dataIO.is_valid_json(f):
-        print("Creating default carrot.json...")
+        print("Creating default credits.json...")
         dataIO.save_json(f, default)
 
 
 def setup(bot):
     check_folders()
     check_files()
-    bot.add_cog(Carrot(bot))
+    bot.add_cog(credits(bot))
