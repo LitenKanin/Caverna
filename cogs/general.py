@@ -68,26 +68,7 @@ class General:
             await self.bot.say("{} :game_die: {} :game_die:".format(author.mention, n))
         else:
             await self.bot.say("{} Maybe higher than 1? ;P".format(author.mention))
-            
-            
-    @commands.command(pass_context=True)
-    async def apply(self, ctx, job, reason):
-        msg = ("[DEVELOPER]: " + author )
-        
-        author = ctx.message.author
-        
-        owner = discord.utils.get(self.bot.get_all_members(),
-                                  id=self.bot.settings.owner)
-        
-        
-        if job == "1":
-            await self.bot.say("Thank you for applying, we will send you more information when we're done checking your message.")
-            await self.bot.send_message(owner, msg + reason)
-            
-        if job == "2":
-            await self.bot.say("")
-        
-
+           
             
 
     @commands.command(pass_context=True)
