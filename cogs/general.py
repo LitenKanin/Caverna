@@ -124,23 +124,7 @@ class General:
             await self.bot.say("{} We're square {}!"
                                "".format(Caverna_choice.value, author.mention))
             
-            
-    @commands.command(pass_context = True)
-    async def report(self, ctx, *, user: discord.Member=None):
-        """Reports a user."""
-        
-        server = ctx.message.server
-
-        member = ctx.message.author
-        
-        
-        
-        role = discord.utils.get(server.role_hierarchy, name="reported user")
-        await self.bot.replace_roles(user, role)
-
-        await self.bot.say("The user is now reported. ")
-        
-        
+           
 
     
     @commands.command(pass_context = True)
