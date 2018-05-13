@@ -333,7 +333,7 @@ class Mod:
 
     @commands.command(pass_context=True, no_pm=True)
     @checks.admin_or_permissions(kick_members=True)
-    async def warn(self, ctx, *, user: discord.Member=None, warning : str):
+    async def warn(self, ctx, user: discord.Member, *, reason: str = None):
         """Shows users's informations"""
         author = ctx.message.author
         server = ctx.message.server
