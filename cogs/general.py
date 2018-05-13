@@ -174,8 +174,6 @@ class General:
     @commands.command(no_pm=True, pass_context=True)
     async def warn(self, ctx, *, user: discord.Member):
         """Resets modlog's cases"""
-        
-        await ("test")
         embed = discord.Embed(title="WARNING", description="test", color=0x00ff00)
         embed.add_field(name="Test", value="A", inline=False)
         embed.add_field(name="test2", value="B", inline=False)
