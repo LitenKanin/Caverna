@@ -248,13 +248,6 @@ class Mod:
         data.set_footer(text="Member #{} | User ID:{}"
                              "".format(member_number, user.id))
 
-        name = str(user)
-        name = " ~ ".join((name, user.nick)) if user.nick else name
-
-        if user.avatar_url:
-            data.set_author(name=name, url=user.avatar_url)
-            data.set_thumbnail(url=user.avatar_url)
-
     @modset.command(pass_context=True, no_pm=True, name='cases')
     async def set_cases(self, ctx, action: str = None, enabled: bool = None):
         """Enables or disables case creation for each type of mod action
