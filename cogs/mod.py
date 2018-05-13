@@ -204,6 +204,11 @@ class Mod:
         self.cases[server.id] = {}
         dataIO.save_json("data/mod/modlog.json", self.cases)
         await self.bot.say("Cases have been reset.")
+        
+    @modset.command(pass_context=True, no_pm=True)
+    async def warn(self, ctx):
+        
+        await.self.bot.say("test succied")
 
     @modset.command(pass_context=True, no_pm=True)
     async def deletedelay(self, ctx, time: int=None):
@@ -235,18 +240,6 @@ class Mod:
                 else:
                     await self.bot.say("I will not delete command messages.")
                     
-                    
-    @modset.command(pass_context=True, no_pm=True)
-    async def warn(self, ctx, user: discord.Member, *, reason: str = None):
-        """Shows users's informations"""
-        author = ctx.message.author
-        server = ctx.message.server
-
-
-        data = discord.Embed(description=game, colour=user.colour)
-        data.add_field(text="Warning: " + reason)
-        data.set_footer(text="Member #{} | User ID:{}"
-                             "".format(member_number, user.id))
 
     @modset.command(pass_context=True, no_pm=True, name='cases')
     async def set_cases(self, ctx, action: str = None, enabled: bool = None):
