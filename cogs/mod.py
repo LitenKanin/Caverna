@@ -205,13 +205,31 @@ class Mod:
         dataIO.save_json("data/mod/modlog.json", self.cases)
         await self.bot.say("Cases have been reset.")
         
-    @modset.command(pass_context=True, no_pm=True)
-    async def warn(self, ctx):
+    @commands.command(no_pm=True, pass_context=True)
+    async def warn(self, ctx, *, user: discord.Member=None):
         """Resets modlog's cases"""
+        author = ctx.message.author
         server = ctx.message.server
-        self.cases[server.id] = {}
-        dataIO.save_json("data/mod/modlog.json", self.cases)
-        await self.bot.say("Cases have been reset.")
+
+        data = discord.Embed(description=game, colour=user.colour)
+        data.add_field(name="Warning: ")
+        data.set_footer(text="Member #{} | User ID:{}"
+                             "".format(member_number, user.id))
+
+        name = str(user)
+        name = " ~ ".join((name, user.nick)) if user.nick else name
+
+        if user.avatar_url:
+            data.set_author(name=name, url=user.avatar_url)
+            data.set_thumbnail(url=user.avatar_url)
+        else:
+            data.set_author(name=name)
+
+        try:
+            await self.bot.say(embed=data)
+        except discord.HTTPException:
+            await self.bot.say("I need the `Embed links` permission "
+                               "to send this")
         
     @modset.command(pass_context=True, no_pm=True)
     async def deletedelay(self, ctx, time: int=None):
