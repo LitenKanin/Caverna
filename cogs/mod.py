@@ -211,8 +211,7 @@ class Mod:
         author = ctx.message.author
         server = ctx.message.server
 
-        data = discord.Embed()
-        data.add_field(name="test")
+        await self.bot.say("test")
         
     @modset.command(pass_context=True, no_pm=True)
     async def deletedelay(self, ctx, time: int=None):
