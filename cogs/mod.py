@@ -204,16 +204,7 @@ class Mod:
         self.cases[server.id] = {}
         dataIO.save_json("data/mod/modlog.json", self.cases)
         await self.bot.say("Cases have been reset.")
-        
-    @commands.command(no_pm=True, pass_context=True)
-    async def warn(self, ctx, *, user: discord.Member):
-        """Resets modlog's cases"""
-        
-        await ("test")
-        embed = discord.Embed(title="WARNING", description="test", color=0x00ff00)
-        embed.add_field(name="Test", value="A", inline=False)
-        embed.add_field(name="test2", value="B", inline=False)
-        await self.bot.send_message(message.channel, embed=embed)
+       
         
     @modset.command(pass_context=True, no_pm=True)
     async def deletedelay(self, ctx, time: int=None):
