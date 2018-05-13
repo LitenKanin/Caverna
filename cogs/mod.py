@@ -234,6 +234,37 @@ class Mod:
                                        " stop deleting messages".format(delay))
                 else:
                     await self.bot.say("I will not delete command messages.")
+                    
+                    
+    @modset.command(pass_context=True, no_pm=True)
+    @checks.admin_or_permissions(kick_members=True)
+    async def warn(self, ctx, user: discord.Member, *, reason: str = None):
+        """Shows users's informations"""
+        author = ctx.message.author
+        server = ctx.message.server
+
+
+
+
+        data = discord.Embed(description=game, colour=user.colour)
+        data.add_field(text="Warning: " + reason)
+        data.set_footer(text="Member #{} | User ID:{}"
+                             "".format(member_number, user.id))
+
+        name = str(user)
+        name = " ~ ".join((name, user.nick)) if user.nick else name
+
+        if user.avatar_url:
+            data.set_author(name=name, url=user.avatar_url)
+            data.set_thumbnail(url=user.avatar_url)
+        else:
+            data.set_author(name=name)
+
+        try:
+            await self.bot.say(embed=data)
+        except discord.HTTPException:
+            await self.bot.say("I need the `Embed links` permission "
+                               "to send this")
 
     @modset.command(pass_context=True, no_pm=True, name='cases')
     async def set_cases(self, ctx, action: str = None, enabled: bool = None):
