@@ -206,19 +206,15 @@ class Mod:
         await self.bot.say("Cases have been reset.")
         
     @commands.command(no_pm=True, pass_context=True)
-    async def warn(self, ctx, *, user: discord.Member=None):
+    async def warn(self, ctx, *, user: discord.Member):
         """Resets modlog's cases"""
         author = ctx.message.author
         server = ctx.message.server
 
-        data = discord.Embed(description=game, colour=user.colour)
+        data = discord.Embed(colour=user.colour)
         data.add_field(name="Warning: ")
         data.set_footer(text="Member #{} | User ID:{}"
                              "".format(member_number, user.id))
-
-        if user.avatar_url:
-            data.set_author(name=name, url=user.avatar_url)
-            data.set_thumbnail(url=user.avatar_url)
         
     @modset.command(pass_context=True, no_pm=True)
     async def deletedelay(self, ctx, time: int=None):
