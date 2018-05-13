@@ -209,7 +209,11 @@ class Mod:
     async def warn(self, ctx, *, user: discord.Member):
         """Resets modlog's cases"""
         
-        await self.bot.say("test")
+        await ("test")
+        embed = discord.Embed(title="WARNING", description="test", color=0x00ff00)
+        embed.add_field(name="Test", value="A", inline=False)
+        embed.add_field(name="test2", value="B", inline=False)
+        await await.self.bot.send_message(message.channel, embed=embed)
         
     @modset.command(pass_context=True, no_pm=True)
     async def deletedelay(self, ctx, time: int=None):
