@@ -41,14 +41,18 @@ class General:
         self.ball = ["As I see it, yes", "It is certain", "It is decidedly so", "Most likely", "Outlook good",
                      "Signs point to yes", "Without a doubt", "Yes", "Yes – definitely", "You may rely on it", "Reply hazy, try again",
                      "Ask again later", "Better not tell you now", "Cannot predict now", "Concentrate and ask again",
-                     "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful", "no u", 
-                     "No - definitely", "I don't know", "STFU!"]
+                     "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful", "No - definitely"
+                     "STFU!, "no u"]
         self.poll_sessions = []
+
+    @commands.command(hidden=True)
+    async def ping(self):
+        """Pong."""
+        await self.bot.say("Pong.")
 
     @commands.command()
     async def choose(self, *choices):
         """Chooses between multiple choices.
-
         To denote multiple choices, you should use double quotes.
         """
         choices = [escape_mass_mentions(c) for c in choices]
@@ -60,7 +64,6 @@ class General:
     @commands.command(pass_context=True)
     async def roll(self, ctx, number : int = 100):
         """Rolls random number (between 1 and user choice)
-
         Defaults to 100.
         """
         author = ctx.message.author
@@ -69,13 +72,10 @@ class General:
             await self.bot.say("{} :game_die: {} :game_die:".format(author.mention, n))
         else:
             await self.bot.say("{} Maybe higher than 1? ;P".format(author.mention))
-           
-            
 
     @commands.command(pass_context=True)
     async def flip(self, ctx, user : discord.Member=None):
         """Flips a coin... or a user.
-
         Defaults to coin.
         """
         if user != None:
@@ -100,7 +100,7 @@ class General:
         """Play rock paper scissors"""
         author = ctx.message.author
         player_choice = your_choice.choice
-        Caverna_choice = choice((RPS.rock, RPS.paper, RPS.scissors))
+        red_choice = choice((RPS.rock, RPS.paper, RPS.scissors))
         cond = {
                 (RPS.rock,     RPS.paper)    : False,
                 (RPS.rock,     RPS.scissors) : True,
@@ -110,49 +110,30 @@ class General:
                 (RPS.scissors, RPS.paper)    : True
                }
 
-        if Caverna_choice == player_choice:
+        if red_choice == player_choice:
             outcome = None # Tie
         else:
-            outcome = cond[(player_choice, Caverna_choice)]
+            outcome = cond[(player_choice, red_choice)]
 
         if outcome is True:
             await self.bot.say("{} You win {}!"
-                               "".format(Caverna_choice.value, author.mention))
+                               "".format(red_choice.value, author.mention))
         elif outcome is False:
             await self.bot.say("{} You lose {}!"
-                               "".format(Caverna_choice.value, author.mention))
+                               "".format(red_choice.value, author.mention))
         else:
             await self.bot.say("{} We're square {}!"
-                               "".format(Caverna_choice.value, author.mention))
-            
-           
+                               "".format(red_choice.value, author.mention))
 
-    
-    @commands.command(pass_context = True)
-    async def agree(self, ctx):
-        """Accepts our agreement."""
-        
-        server = ctx.message.server
-
-        member = ctx.message.author
-        
-        
-        role = discord.utils.get(server.role_hierarchy, name="MEMBER")
-        await self.bot.replace_roles(member, role)
-
-        await self.bot.say("Thank you for submitting our agreement. I hope you enjoy your stay!")
-        
-        
-
-    @commands.command(name="
-                      ", aliases=["8ball"])
+    @commands.command(name="8", aliases=["8ball"])
     async def _8ball(self, *, question : str):
         """Ask 8 ball a question
-
         Question must end with a question mark.
         """
-        
-        await self.bot.say("`" + choice(self.ball) + "`")
+        if question.endswith("?") and question != "?":
+            await self.bot.say("`" + choice(self.ball) + "`")
+        else:
+            await self.bot.say("That doesn't look like a question.")
 
     @commands.command(aliases=["sw"], pass_context=True)
     async def stopwatch(self, ctx):
@@ -173,21 +154,9 @@ class General:
         search_terms = escape_mass_mentions(search_terms.replace(" ", "+"))
         await self.bot.say("https://lmgtfy.com/?q={}".format(search_terms))
 
-
-    @commands.command(pass_context = True)
-    async def tts(self, ctx, *args):
-        """Uses the text to speech function."""
-
-        mesg = ' '.join(args)
-
-
-        await self.bot.say(mesg, tts=True)
-
-
     @commands.command(no_pm=True, hidden=True)
     async def hug(self, user : discord.Member, intensity : int=1):
         """Because everyone likes hugs
-
         Up to 10 intensity levels."""
         name = italics(user.display_name)
         if intensity <= 0:
@@ -201,10 +170,6 @@ class General:
         elif intensity >= 10:
             msg = "(づ￣ ³￣)づ{} ⊂(´・ω・｀⊂)".format(name)
         await self.bot.say(msg)
-
-
-
-
 
     @commands.command(pass_context=True, no_pm=True)
     async def userinfo(self, ctx, *, user: discord.Member=None):
@@ -228,7 +193,7 @@ class General:
         created_on = "{}\n({} days ago)".format(user_created, since_created)
         joined_on = "{}\n({} days ago)".format(user_joined, since_joined)
 
-        game = "This user is {}.".format(user.status)
+        game = "Chilling in {} status".format(user.status)
 
         if user.game is None:
             pass
@@ -240,15 +205,15 @@ class General:
         if roles:
             roles = sorted(roles, key=[x.name for x in server.role_hierarchy
                                        if x.name != "@everyone"].index)
-            roles = "   &   ".join(roles)
+            roles = ", ".join(roles)
         else:
             roles = "None"
 
         data = discord.Embed(description=game, colour=user.colour)
         data.add_field(name="Joined Discord on", value=created_on)
-        data.add_field(name="Joined Omnia on", value=joined_on)
+        data.add_field(name="Joined this server on", value=joined_on)
         data.add_field(name="Roles", value=roles, inline=False)
-        data.set_footer(text="Member #{} | User ID: {}"
+        data.set_footer(text="Member #{} | User ID:{}"
                              "".format(member_number, user.id))
 
         name = str(user)
@@ -276,7 +241,8 @@ class General:
         total_users = len(server.members)
         text_channels = len([x for x in server.channels
                              if x.type == discord.ChannelType.text])
-        voice_channels = len(server.channels) - text_channels
+        voice_channels = len([x for x in server.channels
+                             if x.type == discord.ChannelType.voice])
         passed = (ctx.message.timestamp - server.created_at).days
         created_at = ("Since {}. That's over {} days ago!"
                       "".format(server.created_at.strftime("%d %b %Y %H:%M"),
@@ -311,7 +277,6 @@ class General:
     @commands.command()
     async def urban(self, *, search_terms : str, definition_number : int=1):
         """Urban Dictionary search
-
         Definition number must be between 1 and 10"""
         def encode(s):
             return quote_plus(s, encoding='utf-8', errors='replace')
@@ -356,7 +321,6 @@ class General:
     @commands.command(pass_context=True, no_pm=True)
     async def poll(self, ctx, *text):
         """Starts/stops a poll
-
         Usage example:
         poll Is this a poll?;Yes;No;Maybe
         poll stop"""
