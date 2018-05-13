@@ -342,7 +342,7 @@ class Mod:
 
 
         data = discord.Embed(description=game, colour=user.colour)
-        data.add_field(text="Warning: " + warning)
+        data.add_field(text="Warning: " + reason)
         data.set_footer(text="Member #{} | User ID:{}"
                              "".format(member_number, user.id))
 
