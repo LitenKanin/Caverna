@@ -338,22 +338,11 @@ class Mod:
         author = ctx.message.author
         server = ctx.message.server
 
-        if not user:
-            user = author
-
-        roles = [x.name for x in user.roles if x.name != "@everyone"]
 
 
-        if roles:
-            roles = sorted(roles, key=[x.name for x in server.role_hierarchy
-                                       if x.name != "@everyone"].index)
-            roles = ", ".join(roles)
-        else:
-            roles = "None"
 
         data = discord.Embed(description=game, colour=user.colour)
-        data.add_footer(text="Warning: " + warning)
-        data.add_field(name="Roles", value=roles, inline=False)
+        data.add_field(text="Warning: " + warning)
         data.set_footer(text="Member #{} | User ID:{}"
                              "".format(member_number, user.id))
 
