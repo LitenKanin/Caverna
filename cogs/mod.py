@@ -207,8 +207,7 @@ class Mod:
         
     @modset.command(pass_context=True, no_pm=True)
     async def warn(self, ctx):
-        
-        await.self.bot.say("test succied")
+        await self.bot.say("test")
     @modset.command(pass_context=True, no_pm=True)
     async def deletedelay(self, ctx, time: int=None):
         """Sets the delay until the bot removes the command message.
