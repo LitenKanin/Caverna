@@ -211,10 +211,8 @@ class Mod:
         author = ctx.message.author
         server = ctx.message.server
 
-        data = discord.Embed(colour=user.colour)
-        data.add_field(name="Warning: ")
-        data.set_footer(text="Member #{} | User ID:{}"
-                             "".format(member_number, user.id))
+        data = discord.Embed()
+        data.add_field(name="test")
         
     @modset.command(pass_context=True, no_pm=True)
     async def deletedelay(self, ctx, time: int=None):
