@@ -171,6 +171,34 @@ class General:
         await self.bot.say(msg)
         
         
+    @commands.command(pass_context=True, no_pm=True)
+    async def warn(self, ctx, user: discord.Member, *, reason : str):
+        """Warns a user."""
+        author = ctx.message.author
+        server = ctx.message.server
+
+        user_created = user.created_at.strftime("%d %b %Y %H:%M")
+        member_number = sorted(server.members,
+                               key=lambda m: m.joined_at).index(user) + 1
+
+
+        data = discord.Embed(description= " ", colour=user.colour)
+        data.add_field(name="Warning: " + reason)
+        data.set_footer(text="Member #{} | User ID:{}"
+                             "".format(member_number, user.id))
+
+        name = str(user)
+        name = " ~ ".join((name, user.nick)) if user.nick else name
+
+        if user.avatar_url:
+            data.set_author(name=name, url=user.avatar_url)
+            data.set_thumbnail(url=user.avatar_url)
+
+        try:
+            await self.bot.say(embed=data)
+        except discord.HTTPException:
+            await self.bot.say("I need the `Embed links` permission "
+                               "to send this")
     
     @commands.command(pass_context=True, no_pm=True)
     async def userinfo(self, ctx, *, user: discord.Member=None):
