@@ -199,9 +199,7 @@ class General:
         except discord.HTTPException:
             await self.bot.say("I need the `Embed links` permission "
                                "to send this")
-                             
-         await self.bot.send_message(discord.Object(id='445624490072866826'), "User: " + name + " has been warned for " + reason)
-    
+                            
     @commands.command(pass_context=True, no_pm=True)
     async def userinfo(self, ctx, *, user: discord.Member=None):
         """Shows users's informations"""
