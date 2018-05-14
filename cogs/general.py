@@ -181,20 +181,18 @@ class General:
         member_number = sorted(server.members,
                                key=lambda m: m.joined_at).index(user) + 1
 
+        name = str(user)
+        name = " ~ ".join((name, user.nick)) if user.nick else name
 
         data = discord.Embed(description= " ", colour=user.colour)
+        data.add_field(name="User: ", value=name)
         data.add_field(name="Warning: ", value=reason)
         data.set_footer(text="Member #{} | User ID:{}"
                              "".format(member_number, user.id))
 
-        name = str(user)
-        name = " ~ ".join((name, user.nick)) if user.nick else name
-
         if user.avatar_url:
             data.set_author(name=name, url=user.avatar_url)
             data.set_thumbnail(url=user.avatar_url)
-        else:
-            data.set_author(name=name)
 
         try:
             await self.bot.say(embed=data)
