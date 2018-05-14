@@ -184,9 +184,9 @@ class General:
         name = str(user)
         name = " ~ ".join((name, user.nick)) if user.nick else name
 
-        data = discord.Embed(description= " ", colour=user.colour)
-        data.add_field(name="User: ", value=name)
-        data.add_field(name="Warning: ", value=reason)
+        data = discord.Embed(description= " ", colour=#CC0000)
+        data.add_field(name="**User:** ", value=name)
+        data.add_field(name="**Warning: **", value=reason)
         data.set_footer(text="Member #{} | User ID:{}"
                              "".format(member_number, user.id))
 
