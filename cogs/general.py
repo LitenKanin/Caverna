@@ -177,37 +177,9 @@ class General:
         author = ctx.message.author
         server = ctx.message.server
 
-        if not user:
-            user = author
 
-        roles = [x.name for x in user.roles if x.name != "@everyone"]
-
-        joined_at = self.fetch_joined_at(user, server)
-        since_created = (ctx.message.timestamp - user.created_at).days
-        since_joined = (ctx.message.timestamp - joined_at).days
-        user_joined = joined_at.strftime("%d %b %Y %H:%M")
-        user_created = user.created_at.strftime("%d %b %Y %H:%M")
         member_number = sorted(server.members,
                                key=lambda m: m.joined_at).index(user) + 1
-
-        created_on = "{}\n({} days ago)".format(user_created, since_created)
-        joined_on = "{}\n({} days ago)".format(user_joined, since_joined)
-
-        game = "Chilling in {} status".format(user.status)
-
-        if user.game is None:
-            pass
-        elif user.game.url is None:
-            game = "Playing {}".format(user.game)
-        else:
-            game = "Streaming: [{}]({})".format(user.game, user.game.url)
-
-        if roles:
-            roles = sorted(roles, key=[x.name for x in server.role_hierarchy
-                                       if x.name != "@everyone"].index)
-            roles = ", ".join(roles)
-        else:
-            roles = "None"
 
         data = discord.Embed(description=game, colour=user.colour)
         data.add_field(name="Warning: ", value=reason)
