@@ -178,28 +178,11 @@ class General:
         server = ctx.message.server
        
 
-        roles = [x.name for x in user.roles if x.name != "@everyone"]
-
         member_number = sorted(server.members,
                                key=lambda m: m.joined_at).index(user) + 1
 
-        game = "Chilling in {} status".format(user.status)
 
-        if user.game is None:
-            pass
-        elif user.game.url is None:
-            game = "Playing {}".format(user.game)
-        else:
-            game = "Streaming: [{}]({})".format(user.game, user.game.url)
-
-        if roles:
-            roles = sorted(roles, key=[x.name for x in server.role_hierarchy
-                                       if x.name != "@everyone"].index)
-            roles = ", ".join(roles)
-        else:
-            roles = "None"
-
-        data = discord.Embed(description=game, colour=user.colour)
+        data = discord.Embed(description= " ", colour=user.colour)
         data.add_field(name="Warning: ", value=reason)
         data.set_footer(text="Member #{} | User ID:{}"
                              "".format(member_number, user.id))
