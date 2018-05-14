@@ -186,7 +186,6 @@ class General:
 
         data = discord.Embed(description= " ", colour=#CC0000)
         data.add_field(name="User: ", value=name)
-        data.add_field(name="Warning: ", value=reason)
         data.set_footer(text="Member #{} | User ID:{}"
                              "".format(member_number, user.id))
 
@@ -199,6 +198,10 @@ class General:
         except discord.HTTPException:
             await self.bot.say("I need the `Embed links` permission "
                                "to send this")
+                             
+                             
+        await self.bot.send_message(discord.Object(id='445624490072866826'), "User: " + name + " has been warned for " + reason)
+    
                             
     @commands.command(pass_context=True, no_pm=True)
     async def userinfo(self, ctx, *, user: discord.Member=None):
@@ -259,6 +262,9 @@ class General:
         except discord.HTTPException:
             await self.bot.say("I need the `Embed links` permission "
                                "to send this")
+                             
+                             
+       
 
     @commands.command(pass_context=True, no_pm=True)
     async def serverinfo(self, ctx):
