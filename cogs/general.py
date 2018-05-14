@@ -191,7 +191,6 @@ class General:
                              "".format(member_number, user.id))
 
         if user.avatar_url:
-            data.set_author(name=name, url=user.avatar_url)
             data.set_thumbnail(url=user.avatar_url)
 
         try:
