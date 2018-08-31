@@ -23,7 +23,7 @@ from io import TextIOWrapper
 
 
 
-description = "Omnia bot - Made by Infernum"
+description = "Rapid | bot - Made by Infernum"
 
 
 class Bot(commands.Bot):
