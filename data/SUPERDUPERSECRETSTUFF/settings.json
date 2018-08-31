@@ -1,11 +1,11 @@
 {
     "EMAIL" : null,
-    "OWNER" : "287241362229690368",
+    "OWNER" : "",
     "PASSWORD" : null,
     "PREFIXES" : [
         "-"
     ],
-    "TOKEN" : "NDMxMDgzMzA0OTE4NDUwMTc2.DaZlMQ.7sbtixkxwpVu_-5Va85oCrbzVPc",
+    "TOKEN" : "NDg0MDEwODk3OTg4MTI0Njgy.DmtCRA.pBrcHz-nOn07R4so5F7iJY-d4_s",
     "default" : {
         "ADMIN_ROLE" : "[🔱] ADMINISTRATOR",
         "MOD_ROLE" : "[⚜️] MODERATOR",
