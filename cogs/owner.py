@@ -255,7 +255,7 @@ class Owner:
 
     @commands.group(name="set", pass_context=True)
     async def _set(self, ctx):
-        """Changes Omnia's core settings"""
+        """Changes Rapid's core settings"""
         if ctx.invoked_subcommand is None:
             await self.bot.send_cmd_help(ctx)
             return
@@ -309,7 +309,7 @@ class Owner:
     @_set.command(pass_context=True)
     @checks.is_owner()
     async def prefix(self, ctx, *prefixes):
-        """Sets Omnia's global prefixes
+        """Sets Rapid's global prefixes
 
         Accepts multiple prefixes separated by a space. Enclose in double
         quotes if a prefix contains spaces.
@@ -329,7 +329,7 @@ class Owner:
     @_set.command(pass_context=True, no_pm=True)
     @checks.serverowner_or_permissions(administrator=True)
     async def serverprefix(self, ctx, *prefixes):
-        """Sets Omnia's prefixes for this server
+        """Sets Rapid's prefixes for this server
 
         Accepts multiple prefixes separated by a space. Enclose in double
         quotes if a prefix contains spaces.
@@ -362,7 +362,7 @@ class Owner:
     @_set.command(pass_context=True)
     @checks.is_owner()
     async def name(self, ctx, *, name):
-        """Sets Omnia's name"""
+        """Sets Rapid's name"""
         name = name.strip()
         if name != "":
             try:
@@ -382,7 +382,7 @@ class Owner:
     @_set.command(pass_context=True, no_pm=True)
     @checks.is_owner()
     async def nickname(self, ctx, *, nickname=""):
-        """Sets Omnia's nickname
+        """Sets Rapid's nickname
 
         Leaving this empty will remove it."""
         nickname = nickname.strip()
@@ -398,7 +398,7 @@ class Owner:
     @_set.command(pass_context=True)
     @checks.is_owner()
     async def game(self, ctx, *, game=None):
-        """Sets Omnia's playing status
+        """Sets Rapid's playing status
 
         Leaving this empty will clear it."""
 
@@ -419,7 +419,7 @@ class Owner:
     @_set.command(pass_context=True)
     @checks.is_owner()
     async def status(self, ctx, *, status=None):
-        """Sets Omnia's status
+        """Sets Rapid's status
 
         Statuses:
             online
@@ -454,7 +454,7 @@ class Owner:
     @_set.command(pass_context=True)
     @checks.is_owner()
     async def stream(self, ctx, streamer=None, *, stream_title=None):
-        """Sets Omnia's streaming status
+        """Sets Rapid's streaming status
 
         Leaving both streamer and stream_title empty will clear it."""
 
@@ -480,7 +480,7 @@ class Owner:
     @_set.command()
     @checks.is_owner()
     async def avatar(self, url):
-        """Sets Omnia's avatar"""
+        """Sets Rapid's avatar"""
         try:
             async with self.session.get(url) as r:
                 data = await r.read()
@@ -496,7 +496,7 @@ class Owner:
     @_set.command(name="token")
     @checks.is_owner()
     async def _token(self, token):
-        """Sets Omnia's login token"""
+        """Sets Rapid's login token"""
         if len(token) < 50:
             await self.bot.say("Invalid token.")
         else:
